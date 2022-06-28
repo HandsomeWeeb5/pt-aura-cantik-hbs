@@ -1,0 +1,21 @@
+{
+  "name": "gudang_pt_aura_cantik_hbs",
+  "version": "1.0.0",
+  "description": "Website Pergudangan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "directory": "https://github.com/HandsomeWeeb5/pt-aura-cantik-hbs.git"
+  },
+  "keywords": [
+    "express-js",
+    "gudang",
+    "mysql",
+    "nodejs"
+  ],
+  "author": "Farhan",
+  "license": "ISC"
+}
