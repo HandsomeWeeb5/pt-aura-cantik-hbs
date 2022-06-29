@@ -1,12 +1,12 @@
 const express = require('express');
 
 const handlebarsViewEngine = (app, view_engine) => {
-    express.static('public');
+    app.use(express.static('public'));
 
     //* file ext: handlebars as hbs
     app.engine('.hbs', view_engine);
     app.set('view engine', '.hbs');
-    app.set('views', './public/views')
+    app.set('views', 'public/views')
 }
 
 module.exports = {

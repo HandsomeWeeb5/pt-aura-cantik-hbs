@@ -1,0 +1,246 @@
+<!--- CONTENT CONTAINER --->
+    <section class="content-body">
+        <div class="container-lg mx-auto mb-5">
+            <!--- DISPLAY TABLE --->
+            <span class="display-text">Warehouse</span>
+        
+            <!--- NAVIGATION TABS --->
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="/" class="nav-link link-success" aria-current="page">Pemasukan Barang</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/pengeluaran" class="nav-link link-primary" aria-current="page">Pengeluaran Barang</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/penarikan" class="nav-link link-danger" aria-current="page">Penarikan Barang</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/histori" class="nav-link active" aria-current="page">Histori Barang</a>
+                </li>
+            </ul>
+            
+            <!--- CONTAINER CONTENT FROM TAB --->
+            <div class="container bg-light p-3">
+                <div class="histori-box bg-light p-2">
+                    <!--- DATE FILTER --->
+                    <form action="" method="post" class="d-flex justify-content-end align-items-center border">
+                        <label for="search-date" class="me-2">
+                            Search Date:
+                        </label>
+                        <input type="text" id="search-date" name="search-date">
+                        <button type="submit" class="btn btn-dark mx-2">Search</button>
+                    </form>
+                    <!--- HISTORI LIST --->
+                    <ul class="histori-list overflow-auto d-block mt-3 mb-2 border">
+                        <!--- LAMPIRAN ITEM PEMASUKAN --->
+                        <li class="d-block mb-2">
+                            <div class="pemasukan-header d-flex justify-content-between p-2">
+                                <div class="btn btn-warning">
+                                    <span style="color: rgb(85, 80, 6);">
+                                        <strong>Pemasukan</strong>
+                                    </span>
+                                </div>
+                                <span class="d-block" style="color: white;">
+                                    <strong>Waktu Penerimaan: 05/08/2021</strong>
+                                </span>
+                            </div>
+                            <div class="pemasukan-body d-flex justify-content-between">
+                                <div>
+                                    <p>
+                                        <strong>Deskripsi Barang:</strong>
+                                         Produk Kosmetik Master DMM
+                                    </p>
+                                    <p>
+                                        <strong>Tgl. Pemasukan:</strong>
+                                         20/01/2020
+                                    </p>
+                                    <p>
+                                        <strong>Jenis Barang:</strong>
+                                         Kosmetik
+                                    </p>
+                                    <p>
+                                        <strong>No. Dokumen BC:</strong>
+                                         000000
+                                    </p>
+                                </div>
+                                <div>
+                                    <p>
+                                        <strong>Vendor Item:</strong>
+                                         VHSKOSM2321
+                                    </p>
+                                    <p>
+                                        <strong>HS Code:</strong>
+                                         711823200
+                                    </p>
+                                    <p>
+                                        <strong>Barcode Barang:</strong>
+                                        7611232141290
+                                    </p>
+                                </div>
+                                <div>
+                                    <img src="assets/img/profile.jpg" alt="foto_produk_terima_barang" class="product-img">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center pemasukan-body">
+                                <a type="button" href="#" class="btn btn-danger">
+                                    <strong>Hapus Item</strong>
+                                </a>
+                            </div>
+                        </li>
+
+                        <!--- LAMPIRAN ITEM PENGELUARAN --->
+                        <li class="d-block mb-2">
+                            <div class="pengeluaran-header d-flex justify-content-between p-2">
+                                <div class="btn btn-info">
+                                    <strong>Pemasukan</strong>
+                                </div>
+                                <span class="d-block" style="color: white;">
+                                    <strong>Waktu Pengeluaran: 12/08/2021</strong>
+                                </span>
+                            </div>
+                            <!--- PENGELUARAN BODY --->
+                            <div class="pengeluaran-body">
+                                <div class="d-flex justify-content-around my-1">
+                                    <div>
+                                        <p>
+                                            <strong>Alamat Penjualan:</strong>
+                                             Terminal 3 Departure Soekarno-Hatta
+                                        </p>
+                                        <p>
+                                            <strong>Nomor Laporan:</strong>
+                                             000138
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            <strong>Nama Pg. Jawab TBB:</strong>
+                                             Agung Prasetyo
+                                        </p>
+                                        <p>
+                                            <strong>Jabatan TBB:</strong>
+                                            Warehouse Manager
+                                        </p>
+                                    </div>
+                                </div>
+                                <!--- PENGELUARAN BARANG TABLE --->
+                                <div class="container-fluid">
+                                    <table class="table table-bordered mx-auto">
+                                        <thead class="table-secondary">
+                                            <th>Lampiran Index</th>
+                                            <th>Jumlah</th>
+                                            <th>Barcode Barang (Reff)</th>
+                                        </thead>
+                                        <tbody class="table-light">
+                                            <tr>
+                                                <td>KOSMETIK LA PRAIRE DF6</td>
+                                                <td>3 PCS</td>
+                                                <td>BC 2.3 000942/03 Sept 2019</td>
+                                            </tr>
+                                            <tr>
+                                                <td>KOSMETIK LA PRAIRE DF6</td>
+                                                <td>3 PCS</td>
+                                                <td>BC 2.3 000942/03 Sept 2019</td>
+                                            </tr>
+                                            <tr>
+                                                <td>KOSMETIK LA PRAIRE DF6</td>
+                                                <td>3 PCS</td>
+                                                <td>BC 2.3 000942/03 Sept 2019</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center pengeluaran-body">
+                                <a type="button" href="#" class="btn btn-danger">
+                                    <strong>Hapus Item</strong>
+                                </a>
+                            </div>
+                        </li>
+
+                        <!--- LAMPIRAN ITEM PENARIKAN --->
+                        <li class="d-block mb-2">
+                            <div class="penarikan-header d-flex justify-content-between p-2">
+                                <div class="btn btn-danger">
+                                    <strong>Penarikan</strong>
+                                </div>
+                                <span class="d-block" style="color: white;">
+                                    <strong>Waktu Penarikan: 23/10/2021</strong>
+                                </span>
+                            </div>
+                            <!--- PENARIKAN BODY --->
+                            <div class="penarikan-body">
+                                <div class="d-flex justify-content-around my-1">
+                                    <div>
+                                        <p>
+                                            <strong>Alamat Penjualan:</strong>
+                                             Terminal 3 Departure Soekarno-Hatta
+                                        </p>
+                                        <p>
+                                            <strong>Nomor Laporan:</strong>
+                                             000138
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            <strong>Nama Pg. Jawab TBB:</strong>
+                                             Agung Prasetyo
+                                        </p>
+                                        <p>
+                                            <strong>Jabatan TBB:</strong>
+                                            Warehouse Manager
+                                        </p>
+                                    </div>
+                                </div>
+                                <!--- PENGELUARAN BARANG TABLE --->
+                                <div class="container-fluid">
+                                    <table class="table table-bordered mx-auto">
+                                        <thead class="table-secondary">
+                                            <th>Lampiran Index</th>
+                                            <th>Jumlah</th>
+                                            <th>Barcode Barang (Reff)</th>
+                                        </thead>
+                                        <tbody class="table-light">
+                                            <tr>
+                                                <td>KOSMETIK LA PRAIRE DF6</td>
+                                                <td>3 PCS</td>
+                                                <td>BC 2.3 000942/03 Sept 2019</td>
+                                            </tr>
+                                            <tr>
+                                                <td>KOSMETIK LA PRAIRE DF6</td>
+                                                <td>3 PCS</td>
+                                                <td>BC 2.3 000942/03 Sept 2019</td>
+                                            </tr>
+                                            <tr>
+                                                <td>KOSMETIK LA PRAIRE DF6</td>
+                                                <td>3 PCS</td>
+                                                <td>BC 2.3 000942/03 Sept 2019</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center penarikan-body">
+                                <a type="button" href="#" class="btn btn-danger">
+                                    <strong>Hapus Item</strong>
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <!--- PAGINATION --->
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination mt-3 justify-content-center">
+                          <li class="page-item"><a class="page-link link-dark" href="#">Previous</a></li>
+                          <li class="page-item"><a class="page-link link-dark" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link link-dark" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link link-dark" href="#">3</a></li>
+                          <li class="page-item"><a class="page-link link-dark" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </section>

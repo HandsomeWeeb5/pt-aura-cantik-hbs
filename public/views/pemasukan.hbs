@@ -1,0 +1,239 @@
+<!--- Content --->
+    <section class="content-body">
+        <div class="container-lg mx-auto">
+            <!--- DISPLAY TITLE --->
+            <span class="display-text"> Warehouse </span>
+
+            <!--- NAVIGATION TABS --->
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/" >Pemasukan Barang</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-primary" aria-current="page" href="/pengeluaran">Pengeluaran Barang</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-danger" aria-current="page" href="/penarikan">Penarikan Barang</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-info" aria-current="page" href="/histori">Histori Barang</a>
+                </li>
+            </ul>
+
+            <!--- CONTAINER CONTENT FROM TAB  --->
+            <div class="container-md bg-light p-2 mb-4">
+                <div class="container-lg ">
+                            
+                    <div class="d-flex align-items-center">
+                        <form action="" method="get" class="d-flex align-items-center">
+                            <p style="margin: 0;">Search: </p>
+                            <input type="text" placeholder="Cari Deskripsi Barang" id="searchBar" class="ms-2">
+                            <button type="submit" class="btn btn-dark mx-2">Search</button>
+                        </form>
+                        
+                        <!--- DROPDOWN FILTER BARANG --->
+                        <div class="dropdown">
+                            <button class="btn btn-light border border-dark mx-2 dropdown-toggle" type="button" id="filterButton" aria-expanded="false" data-bs-toggle="dropdown"> More Filter </button>
+
+                            <div class="dropdown-menu" width="800">
+
+                            <form class="px-2 py-1" method="get" action="">
+                                <div class="row">
+
+                                    <div class="col-md border">
+                                        <!--- FLT. TGL --->
+                                        <div class="mb-2">
+                                            <label for="tgl_pemasukan">Tgl. Pemasukan</label>
+                                            <input type="date" class="form-control" id="tgl_pemasukan" placeholder="mm-dd-yyyy" value=""
+                                            min="1999-01-01" max="2050-12-31">
+                                        </div>
+                                        <!--- FLT. DOKUM --->
+                                        <div class="mb-2">
+                                            <label for="no_dokumen_bc">No. Dokumen BC</label>
+                                            <input type="text" class="form-control" id="no_dokumen_bc">
+                                        </div>
+                                        <!--- FLT. WAKTU --->
+                                        <div class="mb-2">
+                                            <label for="waktu">Waktu</label>
+                                            <input type="time" class="form-control" id="waktu" value="00:00:00">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md border">
+                                        <!--- FLT. MEREK --->
+                                        <div class="mb-2">
+                                            <label for="merek_brg">Merek Barang</label>
+                                            <input type="text" class="form-control" id="merek_brg">
+                                        </div>
+                                        <!--- FLT. HARGA --->
+                                        <div class="mb-2">
+                                            <label for="harga_per_unit">Harga Per Unit</label>
+                                            <input type="number" class="form-control" id="harga_per_unit" step="0.01">
+                                        </div>
+                                        <!--- FLT. JENIS OPTION --->
+                                        <div class="mb-2">
+                                            <label for="jenis_barang">Jenis Barang</label>
+                                            <select id="jenis_barang" class="form-select">
+                                                <option selected>--PILIH JENIS--</option>
+                                                <option value="1">Kosmetik</option>
+                                                <option value="2">Perhiasan</option>
+                                                <option value="3">Jam Tangan</option>
+                                                <option value="4">Fashion</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!--- BUTTON DIVIDER --->
+                                    <div class="dropdown-divider"></div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary" style="font-weight: 700;">Filter</button>
+                                        <button type="reset" class="btn btn-danger ms-2" style="font-weight: 700;">Reset</button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--- TABLE CONTAINER --->
+            <div class="container-lg mt-3 overflow-scroll table-container-height-pmk">
+                <!---<iframe src="./public/src/html/table_pemasukan.html" width="1050" height="300"></iframe>--->
+                <table class="table table-bordered border table-custom-pmk table-hover" id="tb_pemasukan">
+                    <thead class="table-secondary">
+                        <tr class="d-flex">
+                            <th scope="col"><input type="checkbox" name="select-all-items" id="select-all-items"></th>
+                            <th scope="col" class="th-deskripsi-brg">Deskripsi Barang</th>
+                            <th scope="col" class="th-tgl-pemasukan">Tgl. Pemasukan</th>
+                            <th scope="col" class="th-jenis-brg">Jenis Barang</th>
+                            <th scope="col" class="th-waktu">Waktu</th>
+                            <th scope="col" class="th-merek-brg">Merek Barang</th>
+                            <th scope="col" class="th-no-dokumen-bc">No. Dokumen BC</th>
+                            <th scope="col" class="th-harga-per-unit">Harga Per Unit</th>
+                            <th scope="col" class="th-vendor-item">Vendor Item</th>
+                            <th scope="col" class="th-hs-code">HS Code</th>
+                            <th scope="col" class="th-barcode-brg">Barcode Barang</th>
+                            <th scope="col" class="th-aksi-data">Aksi Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="d-flex">
+                            <td><input type="checkbox" name="select-item" id="select-item"></td>
+                            <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
+                            <td class="th-tgl-pemasukan">21/06/2022</td>
+                            <td class="th-jenis-brg">Kosmetik</td>
+                            <td class="th-waktu">14:59:01</td>
+                            <td class="th-merek-brg">Master</td>
+                            <td class="th-no-dokumen-bc">000000</td>
+                            <td class="th-harga-per-unit">69.50</td>
+                            <td class="th-vendor-item">VHS123</td>
+                            <td class="th-hs-code">71170000</td>
+                            <td class="th-barcode-brg">76543210</td>
+                            <td class="th-aksi-data">
+                                <button class="btn btn-warning">
+                                    <strong>Edit</strong>
+                                </button>
+                                <button class="btn btn-warning">
+                                    <strong>View</strong>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="d-flex">
+                            <td><input type="checkbox" name="select-item" id="select-item"></td>
+                            <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
+                            <td class="th-tgl-pemasukan">21/06/2022</td>
+                            <td class="th-jenis-brg">Kosmetik</td>
+                            <td class="th-waktu">14:59:01</td>
+                            <td class="th-merek-brg">Master</td>
+                            <td class="th-no-dokumen-bc">000000</td>
+                            <td class="th-harga-per-unit">69.50</td>
+                            <td class="th-vendor-item">VHS123</td>
+                            <td class="th-hs-code">71170000</td>
+                            <td class="th-barcode-brg">76543210</td>
+                            <td class="th-aksi-data">
+                                <button class="btn btn-warning">
+                                    <strong>Edit</strong>
+                                </button>
+                                <button class="btn btn-warning">
+                                    <strong>View</strong>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="d-flex">
+                            <td><input type="checkbox" name="select-item" id="select-item"></td>
+                            <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
+                            <td class="th-tgl-pemasukan">21/06/2022</td>
+                            <td class="th-jenis-brg">Kosmetik</td>
+                            <td class="th-waktu">14:59:01</td>
+                            <td class="th-merek-brg">Master</td>
+                            <td class="th-no-dokumen-bc">000000</td>
+                            <td class="th-harga-per-unit">69.50</td>
+                            <td class="th-vendor-item">VHS123</td>
+                            <td class="th-hs-code">71170000</td>
+                            <td class="th-barcode-brg">76543210</td>
+                            <td class="th-aksi-data">
+                                <button class="btn btn-warning">
+                                    <strong>Edit</strong>
+                                </button>
+                                <button class="btn btn-warning">
+                                    <strong>View</strong>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="d-flex">
+                            <td><input type="checkbox" name="select-item" id="select-item"></td>
+                            <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
+                            <td class="th-tgl-pemasukan">21/06/2022</td>
+                            <td class="th-jenis-brg">Kosmetik</td>
+                            <td class="th-waktu">14:59:01</td>
+                            <td class="th-merek-brg">Master</td>
+                            <td class="th-no-dokumen-bc">000000</td>
+                            <td class="th-harga-per-unit">69.50</td>
+                            <td class="th-vendor-item">VHS123</td>
+                            <td class="th-hs-code">71170000</td>
+                            <td class="th-barcode-brg">76543210</td>
+                            <td class="th-aksi-data">
+                                <button class="btn btn-warning">
+                                    <strong>Edit</strong>
+                                </button>
+                                <button class="btn btn-warning">
+                                    <strong>View</strong>
+                                </button>
+                            </td>
+                        </tr>
+                </table>
+            </div>
+
+            <!--- ITEM COUNT DISPLAY & PAGINATION CONTAINER --->
+            <div class="container-lg d-flex mt-2 mb-1">
+                <!--- DISPLAY COUNT CONTAINER --->
+                <div class="container" aria-label="display-count-container" height="20">
+                    <span id="total-item-count" class="mx-2"><strong>Total Item: 4</strong></span>
+                    <span id="total-price-items" class="mx-2"><strong>Total Semua Harga: 123.56 USD</strong></span>
+                </div>
+                
+                <!--- PAGINATION --->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                      <li class="page-item"><a class="page-link link-dark" href="#">Previous</a></li>
+                      <li class="page-item"><a class="page-link link-dark" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link link-dark" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link link-dark" href="#">3</a></li>
+                      <li class="page-item"><a class="page-link link-dark" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!--- BUTTON GROUP FOR TABLE --->
+            <div class="container-lg d-flex my-2 justify-content-center">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add-item-modal">Tambah Barang</button>
+                <button type="button" class="btn btn-danger ms-2">Hapus Barang</button>
+                <button type="button" class="btn btn-primary ms-2">Kirim Barang</button>
+            </div>
+
+        </div>
+
+        {{!-- add_item_modal --}} 
+    </section>

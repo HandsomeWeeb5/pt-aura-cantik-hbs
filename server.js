@@ -44,10 +44,29 @@ app.use(flash())
 
 // Pasang View Engine Handlebars
 handlebarsViewEngine(app, handlebars.engine({
-    extname: '.hbs',
+    extname: 'hbs',
     layoutsDir: `${__dirname}/public/views/layouts`,
     partialsDir: `${__dirname}/public/views/partials`
 }));
+
+// ROUTE HALAMAN
+app.get('/', (req, res) => {
+    res.render('pemasukan', {layout: 'index'})
+});
+
+app.get('/pengeluaran', (req, res) => {
+    res.render('pengeluaran', {layout: 'index'})
+});
+
+app.get('/penarikan', (req, res) => {
+    res.render('penarikan', {layout: 'index'})
+});
+
+app.get('/histori', (req, res) => {
+    res.render('histori', {layout: 'index'})
+})
+
+
 
 // Server listen to Port 7200
 app.listen(PORT, (error) => {
@@ -55,6 +74,4 @@ app.listen(PORT, (error) => {
     console.log(`Server listening to http://localhost:${PORT}`);
 })
 
-app.get('/', (req, res) => {
 
-});

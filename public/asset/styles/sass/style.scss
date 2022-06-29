@@ -1,0 +1,96 @@
+@use "../sass/custom";
+// ! JANGAN HAPUS FILE CUSTOM DI FOLDER SCSS, BIKIN WEBSITE HANCUR
+
+// Import Components
+@use "../sass/components/header";
+@use "../sass/components/sidebar";
+@use "../sass/components/icon";
+@use "../sass/components/navtab";
+@use "../sass/components/table";
+@use "../sass/components/misc";
+@use "../sass/components/lampiran-item";
+@use "../sass/components/histori";
+
+* {
+    ::after {
+        ::before{
+            box-sizing: border-box;
+        }
+    }
+}
+
+body {
+    font-family:'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 6em auto 1fr;
+    grid-template-rows: 60px 2fr 70px; 
+    grid-template-areas: 
+        "Sidebar Header Header"
+        "Sidebar Content Content"
+        "Sidebar Content Content"
+        "Sidebar Footer Footer"
+    ;
+}
+
+p{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* ========= Content ======= */
+.content-body{
+    grid-area: Content;
+    background-color: #EFEFEF;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.display-text{
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+/* ========== Footer ======== */
+footer{
+    grid-area: Footer;
+    background-color: white;
+    height: 45px;
+}
+
+.footer{
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* ======= Nav-link ======= */
+.nav-link{
+    font-weight: 600 !important;
+}
+
+/* ========= Button ====== */
+.btn-primary{
+    color: #fff !important;
+    font-weight: 600 !important;
+  }
+  
+  .btn-info{
+    color: #fff !important;
+    font-weight: 600 !important;
+  }
+  
+  .btn-warning{
+    color: #fff !important;
+    font-weight: 600 !important;
+  }
+  
+  .btn-success{
+    color: #fff !important;
+    font-weight: 600 !important;
+  }
+  
+  .btn-danger{
+    color: #fff !important;
+    font-weight: 600 !important;
+  }

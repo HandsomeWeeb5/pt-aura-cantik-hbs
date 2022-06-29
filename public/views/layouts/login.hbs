@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jakarta Duty Free</title>
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <!-- IMPORT CSS -->
+    <link rel="stylesheet" href="assets/styles/css/login.css">
+    <!-- IMPORT BOOTSTRAP -->
+    <script src="assets/js/bootstrap_v5.0.2/bootstrap.bundle.min.js"></script> 
+</head>
+<body class="background-hero">
+    <header class="container-fluid-xl login-height bg-primary border mb-5">
+    </header>
+
+    <div class="container-xl w-25 p-3 mx-auto my-5 border bg-light">
+        <img src="assets/img/logo_duty_free.png" alt="Logo Jakarta Duty Free" class="d-block w-50 mx-auto">
+        <form action="/login" method="post">
+            
+            <!-- DISPLAY ERROR -->
+            <div>
+                {{!-- if(errors != "") --}}
+                    {{!-- errors.forEach((item) --}}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{! item }}
+                            <p> Error Test </p>
+                           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {{!-- }); --}}
+                {{! } }}   
+            </div>
+
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" id="username" required>
+            
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" id="password" required>
+
+            <button type="submit" class="btn btn-primary d-block mx-auto my-2"><span style="color: white; font-weight: bold;">Login</span></button>
+            <a href="/register" class="secret-btn">Add Account</a>
+        </form>
+    </div>
+        
+    <footer class="w-100 login-height bg-primary border mt-5"><div style="text-align: center; margin-top: 10px; color: white; font-weight: bold;">©2022 PT. Aura Cantik. Created by M. Farhan</div></footer>
+</body>
+</html>
