@@ -1,0 +1,37 @@
+/* ======= TABLE PEMASUKAN ========== */
+.table-container-height-pmk{
+    height: 250px;
+};
+
+.table-custom-pmk{
+    .th-tgl-pemasukan, .th-merek-brg, .th-no-dokumen-bc, .th-harga-per-unit, .th-vendor-item, .th-barcode-brg{
+        min-width: 150px;
+    }
+    .th-deskripsi-brg{
+        width: 300px;
+    }
+    .th-jenis-brg{
+        width: 120px;
+    }
+    .th-waktu{
+        width: 100px;
+    }
+    .th-hs-code{
+        width: 100px;
+    }
+    .th-aksi-data{
+        width: 150px;
+    }
+};
+
+/* ========= TABLE PENGELUARAN ========== */
+.table-container-size-pgl{
+    height: 300px;
+};
+.table-custom-pgl{
+    width: 1200px;
+
+    .th-deskripsi-brg{
+        width: 300px;
+    }
+};

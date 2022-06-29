@@ -1,0 +1,57 @@
+@mixin margin-control-axis ($m-left, $m-right) {
+    margin-left: $m-left;
+    margin-right: $m-right;
+}
+
+@mixin margin-control-cross ($m-top, $m-bottom){
+    margin-top: $m-top;
+    margin-bottom: $m-bottom;
+}
+
+@mixin histori-body($bg-color){
+    padding: 0.5em;
+    background-color: $bg-color;
+}
+
+.histori-box{
+    width: 70vw;
+    @include margin-control-axis(auto, auto);
+}
+
+.histori-list{
+    list-style-type: none;
+    height: 130vh;
+
+    li {
+        @include margin-control-axis(-32px, 5px);
+    }
+}
+
+.pemasukan-body{
+    @include histori-body(#d2eb54);
+}
+
+.pengeluaran-body{
+    @include histori-body(#669ce8);
+}
+
+.penarikan-body{
+    @include histori-body(#ed9fa1);
+}
+
+.product-img{
+    width: 150px;
+    height: 150px;
+}
+
+.pemasukan-header{
+    background-color: rgb(85, 80, 6);
+}
+
+.pengeluaran-header{
+    background-color: #0630bd;
+}
+
+.penarikan-header{
+    background-color: #ee1b2d;
+}

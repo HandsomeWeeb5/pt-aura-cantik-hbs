@@ -1,0 +1,40 @@
+@mixin semibold {
+    font-weight: 600;
+}
+
+#pm-brg {
+    @include semibold();
+    color: #008D06;
+
+    :hover {
+        text-decoration: dashed #008D06;
+    }
+}
+
+#pg-brg {
+    @include semibold();
+    color: #F55D07;
+
+    :hover {
+        text-decoration: underline #F55D07;
+    }
+}
+
+
+#pnk-brg {
+    @include semibold();
+    color: #B30000;
+
+    :hover {
+        text-decoration: underline #F55D07;
+    }
+}
+
+#hst-brg {
+    @include semibold();
+    color: #1B6AB4;
+
+    :hover {
+        text-decoration: underline #1B6AB4;
+    }
+}

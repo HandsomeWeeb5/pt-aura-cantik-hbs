@@ -45,7 +45,8 @@ app.use(flash())
 // Pasang View Engine Handlebars
 handlebarsViewEngine(app, handlebars.engine({
     extname: '.hbs',
-    layoutsDir: `${__dirname}/public/views/layouts`
+    layoutsDir: `${__dirname}/public/views/layouts`,
+    partialsDir: `${__dirname}/public/views/partials`
 }));
 
 // Server listen to Port 7200

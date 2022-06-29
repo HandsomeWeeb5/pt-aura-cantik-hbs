@@ -1,0 +1,26 @@
+.notification {
+    font-size: 2em;
+    text-decoration: none;
+    color: #555353;
+    :hover {
+        color: #FFF500;
+    }
+};
+    
+/* ==== WAREHOUSE ICON ==== */
+#warehouse-menu:hover {
+    color: #1B6AB4;
+}
+#warehouse-menu:active{
+    color: #1B6AB4;
+    text-decoration: #1B6AB4 underline;
+}
+
+/* ==== SETTING MENU ICON ==== */
+#settings-menu:hover{
+    color: #B30000;
+}
+#settings-menu:active{
+    color: #B30000;
+    text-decoration: #B30000 underline;
+}

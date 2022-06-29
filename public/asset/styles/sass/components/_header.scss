@@ -1,0 +1,64 @@
+header{
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    grid-area: Header;
+    background-color: white;
+    padding-right: 30px;
+    height: 75px;
+    border-bottom: 1px solid #000;
+    
+    .logo-picture {
+        display: flex;
+        align-self: center;
+
+        img{
+            width: 20vmin;
+            display: block;
+        }
+    }
+
+}
+
+.account-wrapper{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 25px;
+    margin-right: 20px;
+    /*border: 1px solid black;*/
+}
+
+.photo-circle{
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+}
+
+.logo-picture img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.account-menu-wrapper a{
+    font-weight: 600;
+    text-decoration: none;
+    color: #555353;
+    font-size: 20px;
+}
+
+.dropdown-toggle:hover{
+    text-decoration: solid #555353 underline;
+}
+
+.text-btn{
+    border: 0;
+    background-color: transparent !important;
+    padding: 0;
+    font-weight: 600;
+    font-size: 20px;
+    color: #555353;
+}
