@@ -9,6 +9,8 @@ const handlebars = require('express-handlebars');
 
 // Import Modules
 const { handlebarsViewEngine } = require('./config/view.config');
+const initBarangRoutes = require('./routes/barang.routes');
+const helper = require('./config/helper.config');
 
 // Access env file untuk menjalankan sistem
 require('dotenv').config();
@@ -46,14 +48,11 @@ app.use(flash())
 handlebarsViewEngine(app, handlebars.engine({
     extname: 'hbs',
     layoutsDir: `${__dirname}/public/views/layouts`,
-    partialsDir: `${__dirname}/public/views/partials`
+    partialsDir: `${__dirname}/public/views/partials`,
+    helpers: helper
 }));
 
 // ROUTE HALAMAN
-app.get('/', (req, res) => {
-    res.render('pemasukan', {layout: 'index'})
-});
-
 app.get('/pengeluaran', (req, res) => {
     res.render('pengeluaran', {layout: 'index'})
 });
@@ -64,9 +63,10 @@ app.get('/penarikan', (req, res) => {
 
 app.get('/histori', (req, res) => {
     res.render('histori', {layout: 'index'})
-})
+});
 
-
+// URL syntax: http://localhost:7200/api/barang?limit=[number]&page=[number]
+initBarangRoutes(app);
 
 // Server listen to Port 7200
 app.listen(PORT, (error) => {

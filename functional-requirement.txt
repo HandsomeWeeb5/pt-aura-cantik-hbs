@@ -1,0 +1,11 @@
+Sistem Pergudangan bertugas untuk:
+1). Mencatat dan Simpan Data Dokumen Barang dari Packing List saat masuk. Datanya maksimal berjumlah 10 per halaman.
+
+2). Saat Penjualan Barang, Sistem mencatat Data Dokumen barang dari 'tabel Penyimpanan Pemasukan' ke Lampiran PPB-TBB. Lampiran akan digabungkan ke dalam Laporan beserta identitas jabatan dan waktu laporan.
+
+3). Saat Penarikan Barang, Sistem bekerja sama seperti penjualan tetapi tidak mengambil data dari 'tabel penyimpanan pemasukan'.
+
+4). Setiap transaksi barang (Pemasukan, Pengeluaran, Penarikan) akan disimpan ke dalam data histori barang.
+
+5). Setelah melakukan pembuatan Laporan dan Lampiran PPB-TBB hendak dijadikan file PDF templatenya asli jadi dengan  PDF-LIB;
+

@@ -1,0 +1,42 @@
+<tr class="d-flex">
+                            <td><input type="checkbox" name="select-item" id="select-item"></td>
+                            <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
+                            <td class="th-tgl-pemasukan">21/06/2022</td>
+                            <td class="th-jenis-brg">Kosmetik</td>
+                            <td class="th-waktu">14:59:01</td>
+                            <td class="th-merek-brg">Master</td>
+                            <td class="th-no-dokumen-bc">000000</td>
+                            <td class="th-harga-per-unit">69.50</td>
+                            <td class="th-vendor-item">VHS123</td>
+                            <td class="th-hs-code">71170000</td>
+                            <td class="th-barcode-brg">76543210</td>
+                            <td class="th-aksi-data">
+                                <button class="btn btn-warning">
+                                    <strong>Edit</strong>
+                                </button>
+                                <button class="btn btn-warning">
+                                    <strong>View</strong>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="d-flex">
+                            <td><input type="checkbox" name="select-item" id="select-item"></td>
+                            <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
+                            <td class="th-tgl-pemasukan">21/06/2022</td>
+                            <td class="th-jenis-brg">Kosmetik</td>
+                            <td class="th-waktu">14:59:01</td>
+                            <td class="th-merek-brg">Master</td>
+                            <td class="th-no-dokumen-bc">000000</td>
+                            <td class="th-harga-per-unit">69.50</td>
+                            <td class="th-vendor-item">VHS123</td>
+                            <td class="th-hs-code">71170000</td>
+                            <td class="th-barcode-brg">76543210</td>
+                            <td class="th-aksi-data">
+                                <button class="btn btn-warning">
+                                    <strong>Edit</strong>
+                                </button>
+                                <button class="btn btn-warning">
+                                    <strong>View</strong>
+                                </button>
+                            </td>
+                        </tr>
