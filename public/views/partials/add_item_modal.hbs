@@ -1,0 +1,95 @@
+<!--- ADD ITEM MODAL --->
+<!-- Modal -->
+<div class="modal fade" id="add-item-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="add-item-modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <!--- MODAL CONTENT --->  
+      <div class="modal-content">
+        <!--- MODAL HEADER --->
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Tambah Barang</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!--- FORM ADD ITEM --->
+        <form action="" method="post">
+            <!--- MODAL BODY --->
+            <div class="modal-body">
+                <div class="d-flex">
+                    <div class="mx-2">
+                        <!--- DESKRIPSI BARANG --->
+                        <label for="input-deskripsi-barang">
+                            Deskripsi Barang
+                        </label>
+                        <input type="text" id="input-deskripsi-barang" name="deskripsi-barang" class="form-control">
+                        <!--- TGL. PEMASUKAN --->
+                        <label for="input-tgl-pemasukan">
+                            Tgl. Pemasukan
+                        </label>
+                        <input type="text" id="input-tgl-pemasukan" name="input-tgl-pemasukan" class="form-control">
+                        <label for="jenis-barang-option">
+                            Jenis Barang
+                        </label>
+                        <select class="form-select" name="jenis-barang-option" id="jenis-barang-option">
+                            <option selected> -- PILIH -- </option>
+                            <option value="1">Kosmetik</option>
+                            <option value="2">Perhiasan</option>
+                            <option value="3">Jam Tangan</option>
+                            <option value="4">Fashion</option>
+                        </select>
+                        <!--- MEREK BARANG --->
+                        <label for="input-tgl-pemasukan">
+                            Merek Barang
+                        </label>
+                        <input type="text" id="input-merek-barang" name="input-merek-barang" class="form-control">
+                    </div>
+                    <div class="mx-2">
+                        <!--- NO. DOKUMEN BC --->
+                        <label for="input-deskripsi-barang">
+                            No. Dokumen BC
+                        </label>
+                        <input type="text" id="input-deskripsi-barang" name="deskripsi-barang" class="form-control">
+                        <!--- HARGA PER UNIT --->
+                        <label for="input-harga">
+                            Harga per Unit
+                        </label>
+                        <input type="number" id="input-harga" name="input-harga" class="form-control" step="0.01">
+                        <!--- VENDOR ITEM --->
+                        <label for="input-vendor-item">
+                            Vendor Item
+                        </label>
+                        <input type="text" id="vendor-item" name="vendor-item" class="form-control">
+                        <label for="input-hs-code">
+                            HS Code
+                        </label>
+                        <input type="text" id="hs-code" name="hs-code" class="form-control">
+                        <label for="input-barcode-barang">
+                            Barcode Barang
+                        </label>
+                        <input type="text" id="barcode-barang" name="hs-code" class="form-control">
+                    </div>
+                    <div>
+                        <div class="img-preview" id="img-preview">
+                            <img class="img-preview__image" src="" alt="preview_image">
+                            <div class="img-preview__default-icon">
+                                <div class="img-preview__image-wrapper">
+                                    <span class="icon-picture-svgrepo-com"></span>
+                                    <span style="margin-top: 8px;">Image Empty</span>    
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- MODAL FOOTER -->
+            <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-primary" data-bs-dismiss="modal" href="#">
+                    <strong>Tambah Data</strong>
+                </a>
+                <button type="reset" class="btn btn-danger">
+                    <strong>Reset Input</strong>
+                </button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -4,6 +4,7 @@ const barangService = require('../services/barang.service');
 const viewDataPerPage = async(req, res) => {
     let results = await barangService.getDataBarang();
     
+    /*
     let limit = parseInt(req.query.limit);
     let page = parseInt(req.query.page);
     const startIndex = (page - 1) * limit;
@@ -22,9 +23,10 @@ const viewDataPerPage = async(req, res) => {
         };
     }
     entry.entries = results.slice(startIndex, endIndex);
+    */
 
-    // res.render('pemasukan', {layout: 'index', data: entry}); <= http://local
-    res.json(entry);
+    res.render('pemasukan', {layout: 'index', data: results});
+    // res.json(entry);
     // res.json(results);
 }
 

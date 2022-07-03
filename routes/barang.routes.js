@@ -5,7 +5,7 @@ const pemasukan = require('../controller/pemasukan.controller');
 
 const initBarangRoutes = (app) => {
     // URL syntax: http://localhost:7200/api/barang?limit=[number]&page=[number]
-    router.get("/api/barang", pemasukan.viewDataPerPage);
+    router.get("/", pemasukan.viewDataPerPage);
 
     return app.use("/", router);
 };

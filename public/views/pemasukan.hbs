@@ -102,38 +102,38 @@
             <div class="container-lg mt-3 overflow-scroll table-container-height-pmk">
                 <!---<iframe src="./public/src/html/table_pemasukan.html" width="1050" height="300"></iframe>--->
                 <table class="table table-bordered border table-custom-pmk table-hover" id="tb_pemasukan">
-                    {{#each entry}}
-                        <thead class="table-secondary">
+                    {{!#each entry}}
+                        <thead class="table-secondary sticky-top">
                             <tr>
                                 <th scope="col"><input type="checkbox" name="select-all-items" id="select-all-items"></th>
-                                <th scope="col" class="th-deskripsi-brg">Deskripsi Barang</th>
-                                <th scope="col" class="th-tgl-pemasukan">Tgl. Pemasukan</th>
-                                <th scope="col" class="th-jenis-brg">Jenis Barang</th>
-                                <th scope="col" class="th-waktu">Waktu</th>
-                                <th scope="col" class="th-merek-brg">Merek Barang</th>
-                                <th scope="col" class="th-no-dokumen-bc">No. Dokumen BC</th>
-                                <th scope="col" class="th-harga-per-unit">Harga Per Unit</th>
-                                <th scope="col" class="th-vendor-item">Vendor Item</th>
-                                <th scope="col" class="th-hs-code">HS Code</th>
-                                <th scope="col" class="th-barcode-brg">Barcode Barang</th>
-                                <th scope="col" class="th-aksi-data">Aksi Data</th>
+                                <th scope="col" class="w-50">Deskripsi Barang</th>
+                                <th scope="col">Tgl. Pemasukan</th>
+                                <th scope="col">Jenis Barang</th>
+                                <th scope="col">Waktu</th>
+                                <th scope="col">Merek Barang</th>
+                                <th scope="col">No. Dokumen BC</th>
+                                <th scope="col">Harga Per Unit</th>
+                                <th scope="col">Vendor Item</th>
+                                <th scope="col">HS Code</th>
+                                <th scope="col">Barcode Barang</th>
+                                <th scope="col">Aksi Data</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {{#each data}}
                             <tr>
-                            {{#each entries}}
                                 <td><input type="checkbox" name="select-item" id="select-item"></td>
-                                <td class="th-deskripsi-brg">{{this.deskripsi_brg}}</td>
-                                <td class="th-tgl-pemasukan">{{this.tgl_pemasukan}}</td>
-                                <td class="th-jenis-brg">{{this.jenis_barang}}</td>
-                                <td class="th-waktu">{{this.waktu}}</td>
-                                <td class="th-merek-brg">{{this.merek_brg}}</td>
-                                <td class="th-no-dokumen-bc">{{this.no_dokumen_bc}}</td>
-                                <td class="th-harga-per-unit">{{this.harga_per_unit}}</td>
-                                <td class="th-vendor-item">{{this.vendor_item}}</td>
-                                <td class="th-hs-code">{{this.hs_code}}</td>
-                                <td class="th-barcode-brg">{{this.barcode_brg}}</td>
-                                <td class="th-aksi-data">
+                                <td>{{this.deskripsi_brg}}</td>
+                                <td>{{this.tgl_pemasukan}}</td>
+                                <td>{{this.jenis_barang}}</td>
+                                <td>{{this.waktu}}</td>
+                                <td>{{this.merek_brg}}</td>
+                                <td>{{this.no_dokumen_bc}}</td>
+                                <td>{{this.harga_per_unit}}</td>
+                                <td>{{this.vendor_item}}</td>
+                                <td>{{this.hs_code}}</td>
+                                <td>{{this.barcode_brg}}</td>
+                                <td>
                                     <button class="btn btn-warning">
                                         <strong>Edit</strong>
                                     </button>
@@ -141,8 +141,8 @@
                                         <strong>View</strong>
                                     </button>
                                 </td>
-                            {{/each}}
                             </tr>   
+                            {{/each}}
                         </tbody>
                 </table>
             </div>
@@ -157,7 +157,7 @@
                 
                 <!--- PAGINATION --->
                 <nav aria-label="Page navigation example">
-                    {{}}
+                
                         <ul class="pagination">
                         <li class="page-item"><a class="page-link link-dark" href="#">Previous</a></li>
                         <li class="page-item"><a class="page-link link-dark" href="#">1</a></li>
@@ -168,7 +168,7 @@
 
                 </nav>
 
-                {{/each}}
+                {{!each}}
             </div>
 
             <!--- BUTTON GROUP FOR TABLE --->
@@ -180,5 +180,5 @@
 
         </div>
 
-        {{!-- add_item_modal --}} 
+        {{> add_item_modal }} 
     </section>
