@@ -25,10 +25,10 @@
                 <div class="container-lg ">
                             
                     <div class="d-flex align-items-center">
-                        <form action="" method="get" class="d-flex align-items-center">
+                        <form class="d-flex align-items-center">
                             <p style="margin: 0;">Search: </p>
-                            <input type="text" placeholder="Cari Deskripsi Barang" id="searchBar" class="ms-2">
-                            <button type="submit" class="btn btn-dark mx-2">Search</button>
+                            <input type="text" placeholder="Cari Deskripsi Barang" id="deskripsi_brg" name="deskripsi_brg" class="ms-2">
+                            <button type="button" class="btn btn-dark mx-2" id="search-button">Search</button>
                         </form>
                         
                         <!--- DROPDOWN FILTER BARANG --->
@@ -120,7 +120,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each data}}
+                            {{#each data.results}}
                             <tr>
                                 <td><input type="checkbox" name="select-item" id="select-item"></td>
                                 <td>{{this.deskripsi_brg}}</td>
@@ -129,7 +129,7 @@
                                 <td>{{this.waktu}}</td>
                                 <td>{{this.merek_brg}}</td>
                                 <td>{{this.no_dokumen_bc}}</td>
-                                <td>{{this.harga_per_unit}}</td>
+                                <td id="harga_per_unit">{{this.harga_per_unit}}</td>
                                 <td>{{this.vendor_item}}</td>
                                 <td>{{this.hs_code}}</td>
                                 <td>{{this.barcode_brg}}</td>
@@ -151,8 +151,8 @@
             <div class="container-lg d-flex mt-2 mb-1">
                 <!--- DISPLAY COUNT CONTAINER --->
                 <div class="container" aria-label="display-count-container" height="20">
-                    <span id="total-item-count" class="mx-2"><strong>Total Item: 4</strong></span>
-                    <span id="total-price-items" class="mx-2"><strong>Total Semua Harga: 123.56 USD</strong></span>
+                    <span id="total-item-count" class="mx-2"><strong>Total Item: {{data.totalItem}}</strong></span>
+                    <span id="total-price-items" class="mx-2"><strong>Total Semua Harga: {{data.total_harga}} USD</strong></span>
                 </div>
                 
                 <!--- PAGINATION --->

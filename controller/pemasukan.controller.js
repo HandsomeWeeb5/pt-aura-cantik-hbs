@@ -3,7 +3,13 @@ const barangService = require('../services/barang.service');
 
 const viewDataPerPage = async(req, res) => {
     let results = await barangService.getDataBarang();
-    
+    let totalItem = results.length;
+    if(totalItem === undefined){
+        totalItem = 0;
+    }
+    let totalPrice = await barangService.totalHargaDataBarang();
+    let total_harga = totalPrice[0].total_harga;
+
     /*
     let limit = parseInt(req.query.limit);
     let page = parseInt(req.query.page);
@@ -25,13 +31,44 @@ const viewDataPerPage = async(req, res) => {
     entry.entries = results.slice(startIndex, endIndex);
     */
 
-    res.render('pemasukan', {layout: 'index', data: results});
+    res.render('pemasukan', {layout: 'index', 
+        data: { 
+            results,
+            totalItem,
+            total_harga
+        }
+    });
+
     // res.json(entry);
-    // res.json(results);
+    
+    /*
+    res.json({data: {
+        results,
+        totalItem,
+        totalPrice
+    }});
+    */
+}
+
+const filterData = async(req, res) => {
+    /*
+    let results = await barangService.getDataBarang();
+    const filters = req.query;
+    const filteredItems = results.filter(item => {
+        let isValid = true;
+        for (key in filters) {
+            console.log(key, item[key], filters[key]);
+            isValid = isValid && item[key] == filters[key];
+        }
+        return isValid;
+    });
+    res.json(filteredItems);
+    */
 }
 
 module.exports = {
-    viewDataPerPage: viewDataPerPage
+    viewDataPerPage: viewDataPerPage,
+    filterData: filterData
 }
 
 /*
