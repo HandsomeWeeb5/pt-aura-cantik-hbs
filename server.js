@@ -10,6 +10,7 @@ const handlebars = require('express-handlebars');
 // Import Modules
 const { handlebarsViewEngine } = require('./config/view.config');
 const initBarangRoutes = require('./routes/barang.routes');
+const helperConfig = require('./config/helper.config');
 
 // Access env file untuk menjalankan sistem
 require('dotenv').config();
@@ -48,6 +49,7 @@ handlebarsViewEngine(app, handlebars.engine({
     extname: 'hbs',
     layoutsDir: `${__dirname}/public/views/layouts`,
     partialsDir: `${__dirname}/public/views/partials`,
+    helpers: helperConfig.pagination
 }));
 
 // ROUTE HALAMAN

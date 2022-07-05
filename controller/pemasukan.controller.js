@@ -1,45 +1,55 @@
 const express = require('express');
 const barangService = require('../services/barang.service');
 
+// Import all result from database
+
+
 const viewDataPerPage = async(req, res) => {
-    let results = await barangService.getDataBarang();
-    let totalItem = results.length;
+    let rows = await barangService.getDataBarang();
+    let totalItem = rows.length;
     if(totalItem === undefined){
         totalItem = 0;
     }
     let totalPrice = await barangService.totalHargaDataBarang();
     let total_harga = totalPrice[0].total_harga;
 
+    let limit = 10;
+
+    res.render('pemasukan', {
+        layout: 'index', 
+        data: { 
+            rows,
+            totalItem,
+            total_harga
+        },
+        pagination: {
+            page: req.query.page || 1,
+            pageCount: Math.ceil(totalItem/limit)
+        }
+    });
+
     /*
-    let limit = parseInt(req.query.limit);
-    let page = parseInt(req.query.page);
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
-    let entry = {};
-    if(endIndex < results.length){
-        entry.next = {
+    let results = {};
+    if(endIndex < rows.length){
+        results.next = {
             page: page + 1,
             limit: limit
         };
     };
     if(startIndex > 0){
-        entry.previous = {
+        results.previous = {
             page: page - 1,
             limit: limit
         };
     }
-    entry.entries = results.slice(startIndex, endIndex);
+    results.result = rows.slice(startIndex, endIndex);
+    results.totalPrice = total_harga;
     */
 
-    res.render('pemasukan', {layout: 'index', 
-        data: { 
-            results,
-            totalItem,
-            total_harga
-        }
-    });
-
-    // res.json(entry);
+    
+    //res.json(results);
     
     /*
     res.json({data: {
@@ -50,7 +60,7 @@ const viewDataPerPage = async(req, res) => {
     */
 }
 
-const filterData = async(req, res) => {
+const searchByDescription = async(req, res) => {
     /*
     let results = await barangService.getDataBarang();
     const filters = req.query;
@@ -68,7 +78,6 @@ const filterData = async(req, res) => {
 
 module.exports = {
     viewDataPerPage: viewDataPerPage,
-    filterData: filterData
 }
 
 /*

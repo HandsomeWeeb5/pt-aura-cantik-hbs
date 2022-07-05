@@ -45,6 +45,9 @@ const totalHargaDataBarang = () => {
     })
 }
 
+const getDataByFilter = (data) => {
+    
+}
 
 module.exports = {
     getDataBarang: getDataBarang,

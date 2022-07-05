@@ -1,7 +1,8 @@
 const hbs = require('handlebars');
 const paginate = require('handlebars-paginate');
 
-// let helper = hbs.registerHelper('paginate', ());
-let customSuccessResponse
+let pagination = hbs.registerHelper('paginate', paginate);
 
-module.exports = helper;
+module.exports = { 
+     pagination: pagination
+};
