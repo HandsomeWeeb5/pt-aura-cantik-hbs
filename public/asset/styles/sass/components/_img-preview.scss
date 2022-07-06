@@ -1,0 +1,42 @@
+@import "../colors/color-style";
+
+$gray: #727171;
+
+.img-preview{
+    width: 250px;
+    height: 250px;
+    background-color: $neutral-90;
+    margin-bottom: 15px;
+
+    /* Default Text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 600;
+
+    .image-uploaded{
+        display: none;
+        width: 100%;
+    }
+
+    .image-wrapper{
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        align-items: center;
+
+        .icon-font-lg{
+            font-size: 100px;
+            color: $gray;
+        }
+
+        .text-default-image{
+            margin-top: 8px;
+            text-align: center;
+            color: $gray;
+        }
+    }
+}
+

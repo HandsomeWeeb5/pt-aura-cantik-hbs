@@ -5,62 +5,24 @@ const barangService = require('../services/barang.service');
 
 
 const viewDataPerPage = async(req, res) => {
-    let rows = await barangService.getDataBarang();
-    let totalItem = rows.length;
-    if(totalItem === undefined){
-        totalItem = 0;
-    }
+    // let totalItem = await barangService.countAllItem_in_Table();
+    let results = await barangService.getDataBarang();
+    let total_item = results.length;
     let totalPrice = await barangService.totalHargaDataBarang();
     let total_harga = totalPrice[0].total_harga;
-
-    let limit = 10;
-
+    
     res.render('pemasukan', {
         layout: 'index', 
         data: { 
-            rows,
-            totalItem,
+            results,
+            total_item,
             total_harga
-        },
-        pagination: {
-            page: req.query.page || 1,
-            pageCount: Math.ceil(totalItem/limit)
         }
     });
 
-    /*
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
-    let results = {};
-    if(endIndex < rows.length){
-        results.next = {
-            page: page + 1,
-            limit: limit
-        };
-    };
-    if(startIndex > 0){
-        results.previous = {
-            page: page - 1,
-            limit: limit
-        };
-    }
-    results.result = rows.slice(startIndex, endIndex);
-    results.totalPrice = total_harga;
-    */
-
-    
-    //res.json(results);
-    
-    /*
-    res.json({data: {
-        results,
-        totalItem,
-        totalPrice
-    }});
-    */
 }
 
-const searchByDescription = async(req, res) => {
+const searchByFilter = async(req, res) => {
     /*
     let results = await barangService.getDataBarang();
     const filters = req.query;
@@ -74,10 +36,35 @@ const searchByDescription = async(req, res) => {
     });
     res.json(filteredItems);
     */
+    let tgl_pemasukan = req.body.tgl_pemasukan;
+    let no_dokumen_bc = req.body.no_dokumen_bc;
+    let waktu = req.body.waktu;
+    let merek_brg = req.body.merek_brg;
+    let harga_per_unit = req.body.harga_per_unit;
+    let jenis_barang = req.body.jenis_barang;
+
+
+    let results = await barangService.getDataByFilter(tgl_pemasukan, no_dokumen_bc, waktu, merek_brg, harga_per_unit, jenis_barang);
+    
+    let sumAll = await barangService.countAllItem_in_Table();
+    let total_item = sumAll[0].total_item
+    
+    let totalPrice = await barangService.totalHargaDataBarang();
+    let total_harga = totalPrice[0].total_harga;
+
+    res.render('pemasukan', {
+        layout: 'index',
+        data: {
+            results,
+            total_harga,
+            total_item
+        }
+    })
 }
 
 module.exports = {
     viewDataPerPage: viewDataPerPage,
+    searchByFilter: searchByFilter
 }
 
 /*

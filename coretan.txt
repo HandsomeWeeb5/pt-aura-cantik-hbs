@@ -40,3 +40,29 @@
                                 </button>
                             </td>
                         </tr>
+
+let imageStorage = multer.diskStorage({
+      destination: (req, file, callback) => {
+           callback(null, 'public/upload/img')
+      },
+     filename: (req, file, callback) => {
+           callback(null, file.fieldname)
+     },
+})
+
+let pdfStorage = multer.diskStorage({
+      destination: (req, file, callback) => {
+             callback(null, 'public/upload/pdf')
+      }
+})
+
+let uploadImage = multer({ storage : imageStorage });
+let uploadPDF = multer({ storage: pdfStorage });
+
+const upload_imagefile = (req, res, next) => {
+      uploadImage.single("input-imgfile")
+};
+
+const upload_PDFfile = (req, res, next) => {
+      uploadPDF.single("create-pdffile")
+};

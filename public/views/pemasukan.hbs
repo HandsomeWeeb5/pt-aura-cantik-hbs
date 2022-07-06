@@ -37,25 +37,24 @@
 
                             <div class="dropdown-menu" width="800">
 
-                            <form class="px-2 py-1" method="get" action="">
+                            <form class="px-2 py-1" method="post" action="/filter">
                                 <div class="row">
 
                                     <div class="col-md border">
                                         <!--- FLT. TGL --->
                                         <div class="mb-2">
                                             <label for="tgl_pemasukan">Tgl. Pemasukan</label>
-                                            <input type="date" class="form-control" id="tgl_pemasukan" placeholder="mm-dd-yyyy" value=""
-                                            min="1999-01-01" max="2050-12-31">
+                                            <input type="text" class="form-control" id="tgl_pemasukan" placeholder="mm-ddd-yyyy" name="tgl_pemasukan" value="">
                                         </div>
                                         <!--- FLT. DOKUM --->
                                         <div class="mb-2">
                                             <label for="no_dokumen_bc">No. Dokumen BC</label>
-                                            <input type="text" class="form-control" id="no_dokumen_bc">
+                                            <input type="text" class="form-control" id="no_dokumen_bc" name="no_dokumen_bc" value="">
                                         </div>
                                         <!--- FLT. WAKTU --->
                                         <div class="mb-2">
                                             <label for="waktu">Waktu</label>
-                                            <input type="time" class="form-control" id="waktu" value="00:00:00">
+                                            <input type="text" class="form-control" id="waktu" placeholder="hh:mm:ss" value="" name="waktu">
                                         </div>
                                     </div>
 
@@ -63,22 +62,22 @@
                                         <!--- FLT. MEREK --->
                                         <div class="mb-2">
                                             <label for="merek_brg">Merek Barang</label>
-                                            <input type="text" class="form-control" id="merek_brg">
+                                            <input type="text" class="form-control" id="merek_brg" name="merek_brg" value="">
                                         </div>
                                         <!--- FLT. HARGA --->
                                         <div class="mb-2">
                                             <label for="harga_per_unit">Harga Per Unit</label>
-                                            <input type="number" class="form-control" id="harga_per_unit" step="0.01">
+                                            <input type="number" class="form-control" id="harga_per_unit" name="harga_per_unit" step="0.01" value="">
                                         </div>
                                         <!--- FLT. JENIS OPTION --->
                                         <div class="mb-2">
                                             <label for="jenis_barang">Jenis Barang</label>
-                                            <select id="jenis_barang" class="form-select">
-                                                <option selected>--PILIH JENIS--</option>
-                                                <option value="1">Kosmetik</option>
-                                                <option value="2">Perhiasan</option>
-                                                <option value="3">Jam Tangan</option>
-                                                <option value="4">Fashion</option>
+                                            <select id="jenis_barang" name="jenis_barang" class="form-select">
+                                                <option value="" selected>--PILIH JENIS--</option>
+                                                <option value="Kosmetik">Kosmetik</option>
+                                                <option value="Perhiasan">Perhiasan</option>
+                                                <option value="Jam Tangan">Jam Tangan</option>
+                                                <option value="Fashion">Fashion</option>
                                             </select>
                                         </div>
                                     </div>
@@ -89,7 +88,7 @@
                                         <button type="submit" class="btn btn-primary" style="font-weight: 700;">Filter</button>
                                         <button type="reset" class="btn btn-danger ms-2" style="font-weight: 700;">Reset</button>
                                     </div>
-
+    
                                 </div>
                             </form>
 
@@ -120,7 +119,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each data.rows}}
+                            {{#each data.results}}
                             <tr>
                                 <td><input type="checkbox" name="select-item" id="select-item"></td>
                                 <td>{{this.deskripsi_brg}}</td>
@@ -151,36 +150,15 @@
             <div class="container-lg d-flex mt-2 mb-1">
                 <!--- DISPLAY COUNT CONTAINER --->
                 <div class="container" aria-label="display-count-container" height="20">
-                    <span id="total-item-count" class="mx-2"><strong>Total Item: {{data.totalItem}}</strong></span>
+                    <span id="total-item-count" class="mx-2"><strong>Total Item: {{data.total_item}}</strong></span>
                     <span id="total-price-items" class="mx-2"><strong>Total Semua Harga: {{data.total_harga}} USD</strong></span>
                 </div>
-                
-                <!--- PAGINATION --->
-                <nav aria-label="Page navigation example">
-                
-                        <ul class="pagination">
-
-                            {{#paginate pagination type="previous"}}
-                            <li {{#if disabled}} class="page-item disabled" {{/if}}><a class="page-link link-dark" href="?page={{n}}">Previous</a></li>
-                            {{/paginate}}
-
-                            {{#paginate pagination type="middle"}}
-                            <li {{#if active}} class="page-item active" {{/if}}><a class="page-link link-dark" href="?page={{n}}">{{n}}</a></li>
-                            {{/paginate}}
-
-                            {{#paginate pagination type="next"}}
-                            <li {{#if disabled}} class="page-item disabled" {{/if}}><a class="page-link link-dark" href="?page={{n}}">Next</a></li>
-                            {{/paginate}}
-
-                        </ul>
-
-                </nav>
 
                 {{!each}}
             </div>
 
             <!--- BUTTON GROUP FOR TABLE --->
-            <div class="container-lg d-flex my-2 justify-content-center">
+            <div class="container-lg d-flex my-4 justify-content-center">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add-item-modal">Tambah Barang</button>
                 <button type="button" class="btn btn-danger ms-2">Hapus Barang</button>
                 <button type="button" class="btn btn-primary ms-2">Kirim Barang</button>

@@ -10,7 +10,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <!--- FORM ADD ITEM --->
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <!--- MODAL BODY --->
             <div class="modal-body">
                 <div class="d-flex">
@@ -66,17 +66,15 @@
                         </label>
                         <input type="text" id="barcode-barang" name="hs-code" class="form-control">
                     </div>
-                    <div>
+                    <div style="margin-left: 30px;">
                         <div class="img-preview" id="img-preview">
-                            <img class="img-preview__image" src="" alt="preview_image">
-                            <div class="img-preview__default-icon">
-                                <div class="img-preview__image-wrapper">
-                                    <span class="icon-picture-svgrepo-com"></span>
-                                    <span style="margin-top: 8px;">Image Empty</span>    
-                                </div>
+                            <img class="image-uploaded" src="" alt="preview_image">
+                            <div class="image-wrapper">
+                                <span class="icon-picture-svgrepo-com icon-font-lg"></span>
+                                <span class="text-default-image">Upload Gambar dengan klik "browse"</span>    
                             </div>
                         </div>
-
+                        <input type="file" accept="image/*" id="input-imgfile" name="input-imgfile">
                     </div>
                 </div>
             </div>
