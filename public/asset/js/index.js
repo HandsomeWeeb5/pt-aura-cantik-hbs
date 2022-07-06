@@ -6,3 +6,12 @@ $(function(){
         });
     });
 });
+
+// $("#input-imgfile") => input file
+// $("#img-preview") => image preview container
+// $("#img-preview .image-uploaded") => Preview Image
+// $("#img-preview .image-wrapper .text-default-image") => Default Text
+
+/*
+$("#input-imgfile")
+*/

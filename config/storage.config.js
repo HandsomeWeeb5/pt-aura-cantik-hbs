@@ -15,3 +15,8 @@ let pdfStorage = {
         callback(null, file.fieldname)
     }
 }
+
+module.exports = {
+    imageStorage: imageStorage,
+    pdfStorage: pdfStorage
+}
