@@ -66,3 +66,80 @@ const upload_imagefile = (req, res, next) => {
 const upload_PDFfile = (req, res, next) => {
       uploadPDF.single("create-pdffile")
 };
+
+JQuery:
+$( document ).ready(function() {
+  $("#infoTable tbody tr").click(function() {
+    var selected = $(this).hasClass("highlight");
+    $("#infoTable tr").removeClass("highlight");
+    if (!selected)
+      $(this).addClass("highlight");
+  });
+});
+
+JQuery:
+$('#infoTable').on('click', 'tbody tr', function(event) {
+  $(this).addClass('highlight').siblings().removeClass('highlight');
+});
+
+SCSS:
+#infotable {
+    .highlight {
+        td {
+            background-color: gold;
+        }
+    }
+} 
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div class="container">
+  <table id="infoTable" class="table table-fixed">
+    <thead>
+      <tr>
+        <th class="col-xs-3">Name</th>
+        <th class="col-xs-3">Age</th>
+        <th class="col-xs-6">Occupation</th>
+        <th class="col-xs-6">Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="clickableRow">
+        <td class="col-xs-3">John</td>
+        <td class="col-xs-3">43</td>
+        <td class="col-xs-6">School Teacher</td>
+        <td class="col-xs-6">$43,000</td>
+      </tr>
+      <tr class="clickableRow">
+        <td class="col-xs-3">Tim</td>
+        <td class="col-xs-3">52</td>
+        <td class="col-xs-6">Plumber</td>
+        <td class="col-xs-6">$55,000</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>

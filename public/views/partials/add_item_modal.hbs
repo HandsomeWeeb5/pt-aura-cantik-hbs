@@ -24,7 +24,7 @@
                         <label for="input-tgl-pemasukan">
                             Tgl. Pemasukan
                         </label>
-                        <input type="text" id="input-tgl-pemasukan" name="input-tgl-pemasukan" class="form-control">
+                        <input type="text" id="input-tgl-pemasukan" name="input-tgl-pemasukan" class="form-control" placeholder="dd-mmmm-yyyy">
                         <label for="jenis-barang-option">
                             Jenis Barang
                         </label>
@@ -40,13 +40,13 @@
                             Merek Barang
                         </label>
                         <input type="text" id="input-merek-barang" name="input-merek-barang" class="form-control">
-                    </div>
-                    <div class="mx-2">
                         <!--- NO. DOKUMEN BC --->
                         <label for="input-deskripsi-barang">
                             No. Dokumen BC
                         </label>
                         <input type="text" id="input-deskripsi-barang" name="deskripsi-barang" class="form-control">
+                    </div>
+                    <div class="mx-2">
                         <!--- HARGA PER UNIT --->
                         <label for="input-harga">
                             Harga per Unit
@@ -66,15 +66,17 @@
                         </label>
                         <input type="text" id="barcode-barang" name="hs-code" class="form-control">
                     </div>
-                    <div style="margin-left: 30px;">
-                        <div class="img-preview" id="img-preview">
-                            <img class="image-uploaded" src="" alt="preview_image">
-                            <div class="image-wrapper">
-                                <span class="icon-picture-svgrepo-com icon-font-lg"></span>
-                                <span class="text-default-image">Upload Gambar dengan klik "browse"</span>    
+                    <div class="mx-2">
+                        <div style="margin-left: 30px;">
+                            <div class="img-preview">
+                                <img id="image-uploaded" src="" alt="preview_image">
+                                <div class="image-wrapper">
+                                    <span class="icon-picture-svgrepo-com icon-font-lg"></span>
+                                    <span class="text-default-image">Upload Gambar dengan klik "browse"</span>    
+                                </div>
                             </div>
+                            <input type="file" accept="image/*" id="input_imgfile" name="input_imgfile">
                         </div>
-                        <input type="file" accept="image/*" id="input-imgfile" name="input-imgfile">
                     </div>
                 </div>
             </div>
@@ -83,7 +85,7 @@
                 <a type="button" class="btn btn-primary" data-bs-dismiss="modal" href="#">
                     <strong>Tambah Data</strong>
                 </a>
-                <button type="reset" class="btn btn-danger">
+                <button type="reset" class="btn btn-danger" id="pemasukan_reset">
                     <strong>Reset Input</strong>
                 </button>
             </div>

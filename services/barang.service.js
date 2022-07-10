@@ -28,11 +28,28 @@ let sql__viewByFilter = `
     SELECT b.id_barang, b.deskripsi_brg, DATE_FORMAT(CONVERT_TZ(d.tgl_pemasukan, '+00:00', '+07:00'), "%d-%M-%Y") AS tgl_pemasukan, j.jenis_barang, b.waktu, d.no_dokumen_bc, b.merek_brg, b.harga_per_unit, b.vendor_item, b.hs_code, b.barcode_brg, b.img_barang FROM tb_barang AS b JOIN tb_dokumen AS d ON (b.id_dokumen = d.id_dokumen) JOIN tb_jenis_barang AS j ON (b.id_jenis_brg = j.id_jenis_brg) WHERE d.tgl_pemasukan = ? OR d.no_dokumen_bc = ? OR b.waktu = ? OR b.merek_brg = ? OR b.harga_per_unit = ? OR j.jenis_barang = ? ORDER BY b.id_barang; 
 `;
 
+//TODO CALL ubahBarang: 
+// 1(?) => id_barang;
+// 2(?) => deskripsi_brg;
+// 3(?) => no_dokumen_bc;
+// 4(?) => nomor_jenis_barang (1 ~ 4);
+// 5(?) => merek_barang;
+// 6(?) => harga_per_unit;
+// 7(?) => vendor_item;
+// 8(?) => hs_code;
+// 9(?) => barcode_barang;
+// 10(?) => gambar_barang;
+let sql__updateById = `CALL ubahBarang(?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+let sql__deleteById = `CALL hapusBarang(?)`;
+
+let sql__insertItem = `CALL tambahkanBarang(?, ?, ?, ?, ?, ?, ?, ?)`;
+
 const database = mysql.createConnection(dbconfig);
 database.connect((err) => {
     if (err) throw err;
     console.log("Database Terkoneksi");
-})
+});
 
 
 //*==== HANYA UNTUK DEVELOPMENT SAJA ===== *

@@ -44,7 +44,7 @@
                                         <!--- FLT. TGL --->
                                         <div class="mb-2">
                                             <label for="tgl_pemasukan">Tgl. Pemasukan</label>
-                                            <input type="text" class="form-control" id="tgl_pemasukan" placeholder="mm-ddd-yyyy" name="tgl_pemasukan" value="">
+                                            <input type="text" class="form-control" id="tgl_pemasukan" placeholder="mm-dddd-yyyy" name="tgl_pemasukan" value="">
                                         </div>
                                         <!--- FLT. DOKUM --->
                                         <div class="mb-2">
@@ -104,7 +104,7 @@
                     {{!#each entry}}
                         <thead class="table-secondary sticky-top">
                             <tr>
-                                <th scope="col"><input type="checkbox" name="select-all-items" id="select-all-items"></th>
+                                <th scope="col">#</th>
                                 <th scope="col" class="w-50">Deskripsi Barang</th>
                                 <th scope="col">Tgl. Pemasukan</th>
                                 <th scope="col">Jenis Barang</th>
@@ -120,7 +120,7 @@
                         </thead>
                         <tbody>
                             {{#each data.results}}
-                            <tr>
+                            <tr id="{{this.id_barang}}">
                                 <td><input type="checkbox" name="select-item" id="select-item"></td>
                                 <td>{{this.deskripsi_brg}}</td>
                                 <td>{{this.tgl_pemasukan}}</td>
@@ -161,7 +161,7 @@
             <div class="container-lg d-flex my-4 justify-content-center">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add-item-modal">Tambah Barang</button>
                 <button type="button" class="btn btn-danger ms-2">Hapus Barang</button>
-                <button type="button" class="btn btn-primary ms-2">Kirim Barang</button>
+                <button type="button" class="btn btn-primary ms-2" id="kirim-btn">Kirim Barang</button>
             </div>
 
         </div>
