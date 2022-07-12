@@ -127,12 +127,13 @@ $(function(){
             data: formAddItemData,
             processData: false,
             contentType: false,
-            async: false,
             success: function(data){
                 console.log(data)
             }   
         })
-    })
+        ev.preventDefault();
+    });
+
 
 });
 

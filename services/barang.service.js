@@ -42,7 +42,7 @@ let sql__viewByFilter = `
 
 let sql__deleteById = `CALL hapusBarang(?)`;
 
-let sql__insertItem = `CALL tambahkanBarang(?)`;
+let sql__insertItem = `CALL tambahkanBarang(?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
 let sql__deleteItem = `CALL hapusBarang(?)`;
 
@@ -91,30 +91,14 @@ const countAllItem_in_Table = () => {
     });
 };
 
-const addNewData = (
-    deskripsi_brg,
-    no_dokumen_bc,
-    jenis_barang,
-    merek_barang,
-    harga_per_unit,
-    vendor_item,
-    hs_code,
-    barcode_barang,
-    img_barang
-) => {
-    let data = [
-        deskripsi_brg,
-        no_dokumen_bc,
-        jenis_barang,
-        merek_barang,
-        harga_per_unit,
-        vendor_item,
-        hs_code,
-        barcode_barang,
-        img_barang
-    ];
+const addNewData = (formData) => {
+
+    let dataArray = Object.keys(formData).map((key) => {
+        return formData[key];
+    });
+
     return new Promise(async (resolve, reject) => {
-        database.query(sql__insertItem, [ data ], (err, result) => {
+        database.query(sql__insertItem, dataArray, (err, result) => {
             if (err) throw err;
             resolve(result);
         });
