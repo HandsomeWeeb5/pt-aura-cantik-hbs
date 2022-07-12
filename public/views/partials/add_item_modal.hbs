@@ -16,13 +16,15 @@
                 <div class="d-flex">
                     <div class="mx-2">
                         <!--- DESKRIPSI BARANG --->
-                        <label for="input-deskripsi-barang">
-                            Deskripsi Barang
+                        <label for="input-deskripsi-barang" class="mt-2">
+                            Deskripsi Barang 
+                            <span class="text-primary">&#65342;</span>
                         </label>
-                        <input type="text" id="input-deskripsi-barang" name="deskripsi_brg" class="form-control" required>
+                        <input type="text" id="input-deskripsi-barang" name="deskripsi_brg" class="form-control" required placeholder="min. 11 Karakter">
                         <!--- JENIS BARANG --->
-                        <label for="jenis-barang-option">
+                        <label for="jenis-barang-option" class="mt-2">
                             Jenis Barang
+                            <span class="text-primary">&#65342;</span>
                         </label>
                         <select class="form-select" name="jenis_barang" id="jenis-barang-option" required>
                             <option selected> -- PILIH -- </option>
@@ -32,33 +34,41 @@
                             <option value="4">Fashion</option>
                         </select>
                         <!--- MEREK BARANG --->
-                        <label for="input-merek-barang">
+                        <label for="input-merek-barang" class="mt-2">
                             Merek Barang
+                            <span class="text-primary">&#65342;</span>
                         </label>
                         <input type="text" id="input-merek-barang" name="merek_brg" class="form-control" required>
                         <!--- NO. DOKUMEN BC --->
-                        <label for="input-no-dokumen-bc">
+                        <label for="input-no-dokumen-bc" class="mt-2">
                             No. Dokumen BC
+                            <span class="text-primary">&#65342;</span>
                         </label>
                         <input type="text" id="input-no-dokumen-bc" name="no_dokumen_bc" class="form-control" placeholder="cth: 000001" required>
+                        <!--- PENANDA --->
+                        <label class="mt-1"><span class="text-primary">&#65342;</span> = Wajib Diisi</label>
                     </div>
                     <div class="mx-2">
                         <!--- HARGA PER UNIT --->
-                        <label for="input-harga-per-unit">
+                        <label for="input-harga-per-unit" class="mt-2">
                             Harga per Unit
+                            <span class="text-primary">&#65342;</span>
                         </label>
                         <input type="number" id="input-harga-per-unit" name="harga_per_unit" class="form-control" step="0.01" placeholder="cth: 23.50 / 50" required>
                         <!--- VENDOR ITEM --->
-                        <label for="input-vendor-item">
+                        <label for="input-vendor-item" class="mt-2">
                             Vendor Item
+                            <span class="text-primary">&#65342;</span>
                         </label>
                         <input type="text" id="input-vendor-item" name="vendor_item" class="form-control" placeholder="cth: VENDOR1234" required>
-                        <label for="input-hs-code">
+                        <label for="input-hs-code" class="mt-2">
                             HS Code
+                            <span class="text-primary">&#65342;</span>
                         </label>
                         <input type="text" id="input-hs-code" name="hs_code" class="form-control" placeholder="cth: 71189000" required>
-                        <label for="input-barcode-barang">
+                        <label for="input-barcode-barang" class="mt-2">
                             Barcode Barang
+                            <span class="text-primary">&#65342;</span>
                         </label>
                         <input type="text" id="input-barcode-barang" name="barcode_brg" class="form-control" placeholder="cth: 232832232249" required>
                     </div>
