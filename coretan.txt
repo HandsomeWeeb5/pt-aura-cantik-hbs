@@ -64,3 +64,5 @@ module.exports = {
     imageStorage: imageStorage,
     pdfStorage: pdfStorage
 }
+
+<label class="text-danger" style="font-size: 14px;">Deskripsi diisi minimal 11 karakter.</label>

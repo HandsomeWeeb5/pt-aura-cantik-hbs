@@ -1,4 +1,3 @@
-
 $(function(){
 
 //* ========== SEARCH BAR ===========
@@ -118,6 +117,7 @@ $(function(){
     })
     //* ============ Get Data From Selected Row end =========
 
+    /*
     $("form.add-item").on('submit', function(ev){
         let formAddItemData = new FormData(this);
 
@@ -133,8 +133,93 @@ $(function(){
         })
         ev.preventDefault();
     });
+    */
 
+    $("form.add-item").validate({
+        errorClass: "denied-alert",
+        rules:{
+            deskripsi_brg: {
+                required: true,
+                minlength: 5
+            },
+            jenis_barang: {
+                required: true
+            },
+            merek_brg: {
+                required: true
+            },
+            no_dokumen_bc: {
+                required: true,
+                rangelength: [6, 6],
+                number: true                
+            },
+            harga_per_unit: {
+                required: true
+            },
+            vendor_item: {
+                required: true
+            },
+            hs_code: {
+                required: true,
+                number: true,
+                rangelength: [8, 8]
+            },
+            barcode_brg: {
+                required: true,
+                number: true,
+                rangelength: [12, 12]
+            }
+        },
+        messages: {
+            deskripsi_brg: {
+                required: "Deskripsi Barang harus diisi!!",
+                minlength: "Harus diisi sampai min. 5 Karakter!!"
+            },
+            jenis_barang: {
+                required: "Jenis Barang harus dipilih!!"
+            },
+            merek_brg: {
+                required: "Merek Barang harus diisi!!"
+            },
+            no_dokumen_bc: {
+                required: "No. Dokumen BC",
+                rangelength: "Tulisan ini harus 6 Digit Angka!",
+                number: "No. Dokumen harus angka, bukan huruf!!"
+            },
+            harga_per_unit: {
+                required: "Harga per Unit harus diisi!"
+            },
+            vendor_item: {
+                required: "Vendor Item Harus diisi!"
+            },
+            hs_code: {
+                required: "HS Code harus diisi!",
+                number: "HS Code harus diisi Angka Saja!",
+                rangelength: "Wajib diisi 8 Angka Digit!"
+            },
+            barcode_brg: {
+                required: "Barcode harus diisi!",
+                number: "Barcode hanya diisi Angka saja!",
+                rangelength: "Wajib diisi 12 Angka Digit!"
+            }
+        },
+        submitHandler: function(a, ev){
+            let formAddItemData = new FormData(this);
 
+            $.ajax({
+                type: "POST",
+                url: "/create",
+                data: formAddItemData,
+                processData: false,
+                contentType: false,
+                success: function(data){
+                    console.log(data)
+                }   
+            })
+            return false; // required to block normal submit since you used ajax
+        }
+    });
+    
 });
 
 /*
