@@ -99,3 +99,10 @@ footer{
   .dropdown-menu{
     z-index: 2000 !important;
   }
+
+input[type="file"] {
+    white-space: normal;
+    word-wrap: break-word;
+    width: 210px;
+    overflow: auto;
+}

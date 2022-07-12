@@ -1,13 +1,16 @@
 
 $(function(){
 
+//* ========== SEARCH BAR ===========
     $("#search-button").on("click", function(){
         var value = $("#cari_deskripsi_brg").val().toLowerCase();
         $(".clickable-rows").filter(function(){
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > - 1);
         });
     });
+//* ========== Search Bar End ==========
 
+//* ========== PREVIEW IMAGE BEFORE UPLOAD ========
     $('#input_imgfile').on("change", () => {
         var file = $('#input_imgfile')[0].files[0];
 
@@ -30,9 +33,10 @@ $(function(){
         $("#image-uploaded").css("display", "none");
         $(".image-wrapper").css("display", "flex");
     }) 
-    
-    var tb_rows_length = $('.clickable_rows').length; // <= checked
+//* ========== Preview Image Before Upload end ========
 
+    //var tb_rows_length = $('.clickable_rows').length; // <= checked
+//* ========== GET DATA FROM SELECTED ROW =========
     let dataPlace = [];
     let count = 0;
 
@@ -110,7 +114,24 @@ $(function(){
         };
 
         console.log(dataPlace);
+        
+    })
+    //* ============ Get Data From Selected Row end =========
 
+    $("form.add-item").on('submit', function(ev){
+        let formAddItemData = new FormData(this);
+
+        $.ajax({
+            type: "POST",
+            url: "/create",
+            data: formAddItemData,
+            processData: false,
+            contentType: false,
+            async: false,
+            success: function(data){
+                console.log(data)
+            }   
+        })
     })
 
 });

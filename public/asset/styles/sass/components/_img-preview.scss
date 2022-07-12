@@ -7,6 +7,7 @@ $gray: #727171;
     height: 250px;
     background-color: $neutral-90;
     margin-bottom: 15px;
+    overflow: hidden;
 
     /* Default Text */
     display: flex;
@@ -50,7 +51,7 @@ $gray: #727171;
 
 #image-uploaded{
     display: none;
-    width: 200px;
+    width: 250px;
     max-height: 350px;
 }
 

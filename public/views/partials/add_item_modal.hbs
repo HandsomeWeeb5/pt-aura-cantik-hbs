@@ -10,7 +10,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <!--- FORM ADD ITEM --->
-        <form action="" method="post" enctype="multipart/form-data">
+        <form class="add-item" action="/create" method="post" enctype="multipart/form-data">
             <!--- MODAL BODY --->
             <div class="modal-body">
                 <div class="d-flex">
@@ -19,16 +19,12 @@
                         <label for="input-deskripsi-barang">
                             Deskripsi Barang
                         </label>
-                        <input type="text" id="input-deskripsi-barang" name="deskripsi-barang" class="form-control">
-                        <!--- TGL. PEMASUKAN --->
-                        <label for="input-tgl-pemasukan">
-                            Tgl. Pemasukan
-                        </label>
-                        <input type="text" id="input-tgl-pemasukan" name="input-tgl-pemasukan" class="form-control" placeholder="dd-mmmm-yyyy">
+                        <input type="text" id="input-deskripsi-barang" name="deskripsi_brg" class="form-control">
+                        <!--- JENIS BARANG --->
                         <label for="jenis-barang-option">
                             Jenis Barang
                         </label>
-                        <select class="form-select" name="jenis-barang-option" id="jenis-barang-option">
+                        <select class="form-select" name="jenis_barang" id="jenis-barang-option">
                             <option selected> -- PILIH -- </option>
                             <option value="1">Kosmetik</option>
                             <option value="2">Perhiasan</option>
@@ -36,35 +32,35 @@
                             <option value="4">Fashion</option>
                         </select>
                         <!--- MEREK BARANG --->
-                        <label for="input-tgl-pemasukan">
+                        <label for="input-merek-barang">
                             Merek Barang
                         </label>
-                        <input type="text" id="input-merek-barang" name="input-merek-barang" class="form-control">
+                        <input type="text" id="input-merek-barang" name="merek_brg" class="form-control">
                         <!--- NO. DOKUMEN BC --->
-                        <label for="input-deskripsi-barang">
+                        <label for="input-no-dokumen-bc">
                             No. Dokumen BC
                         </label>
-                        <input type="text" id="input-deskripsi-barang" name="deskripsi-barang" class="form-control">
+                        <input type="text" id="input-no-dokumen-bc" name="no_dokumen_bc" class="form-control">
                     </div>
                     <div class="mx-2">
                         <!--- HARGA PER UNIT --->
-                        <label for="input-harga">
+                        <label for="input-harga-per-unit">
                             Harga per Unit
                         </label>
-                        <input type="number" id="input-harga" name="input-harga" class="form-control" step="0.01">
+                        <input type="number" id="input-harga-per-unit" name="harga_per_unit" class="form-control" step="0.01">
                         <!--- VENDOR ITEM --->
                         <label for="input-vendor-item">
                             Vendor Item
                         </label>
-                        <input type="text" id="vendor-item" name="vendor-item" class="form-control">
+                        <input type="text" id="input-vendor-item" name="vendor_item" class="form-control">
                         <label for="input-hs-code">
                             HS Code
                         </label>
-                        <input type="text" id="hs-code" name="hs-code" class="form-control">
+                        <input type="text" id="input-hs-code" name="hs_code" class="form-control">
                         <label for="input-barcode-barang">
                             Barcode Barang
                         </label>
-                        <input type="text" id="barcode-barang" name="hs-code" class="form-control">
+                        <input type="text" id="input-barcode-barang" name="barcode_brg" class="form-control">
                     </div>
                     <div class="mx-2">
                         <div style="margin-left: 30px;">
@@ -75,14 +71,14 @@
                                     <span class="text-default-image">Upload Gambar dengan klik "browse"</span>    
                                 </div>
                             </div>
-                            <input type="file" accept="image/*" id="input_imgfile" name="input_imgfile">
+                            <input type="file" accept="image/*" id="input_imgfile" name="img_barang">
                         </div>
                     </div>
                 </div>
             </div>
             <!-- MODAL FOOTER -->
             <div class="modal-footer justify-content-center">
-                <a type="button" class="btn btn-primary" data-bs-dismiss="modal" href="#">
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" href="#">
                     <strong>Tambah Data</strong>
                 </a>
                 <button type="reset" class="btn btn-danger" id="pemasukan_reset">

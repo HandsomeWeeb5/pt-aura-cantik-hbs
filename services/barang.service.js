@@ -39,11 +39,12 @@ let sql__viewByFilter = `
 // 8(?) => hs_code;
 // 9(?) => barcode_barang;
 // 10(?) => gambar_barang;
-let sql__updateById = `CALL ubahBarang(?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
 let sql__deleteById = `CALL hapusBarang(?)`;
 
-let sql__insertItem = `CALL tambahkanBarang(?, ?, ?, ?, ?, ?, ?, ?)`;
+let sql__insertItem = `CALL tambahkanBarang(?)`;
+
+let sql__deleteItem = `CALL hapusBarang(?)`;
 
 const database = mysql.createConnection(dbconfig);
 database.connect((err) => {
@@ -88,12 +89,43 @@ const countAllItem_in_Table = () => {
             resolve(results);
         });
     });
-}
+};
+
+const addNewData = (
+    deskripsi_brg,
+    no_dokumen_bc,
+    jenis_barang,
+    merek_barang,
+    harga_per_unit,
+    vendor_item,
+    hs_code,
+    barcode_barang,
+    img_barang
+) => {
+    let data = [
+        deskripsi_brg,
+        no_dokumen_bc,
+        jenis_barang,
+        merek_barang,
+        harga_per_unit,
+        vendor_item,
+        hs_code,
+        barcode_barang,
+        img_barang
+    ];
+    return new Promise(async (resolve, reject) => {
+        database.query(sql__insertItem, [ data ], (err, result) => {
+            if (err) throw err;
+            resolve(result);
+        });
+    })
+}; 
 
 module.exports = {
     //getDataPerPage: getDataPerPage,
     getDataByFilter: getDataByFilter,
     getDataBarang: getDataBarang,
+    addNewData: addNewData,
     totalHargaDataBarang: totalHargaDataBarang,
     countAllItem_in_Table: countAllItem_in_Table
 }
