@@ -73,9 +73,14 @@ const totalHargaDataBarang = () => {
     })
 }
 
-const getDataByFilter = (tgl_pemasukan, no_dokumen_bc, waktu, merek_brg, harga_per_unit, jenis_barang) => {  
+const getDataByFilter = (filterData) => {  
+    
+    let dataArray = Object.keys(filterData).map((key) => {
+        return filterData[key];
+    });
+
     return new Promise(async (resolve, reject) => {
-        database.query(sql__viewByFilter, [tgl_pemasukan, no_dokumen_bc, waktu, merek_brg, harga_per_unit, jenis_barang], (err, results) => {
+        database.query(sql__viewByFilter, dataArray, (err, results) => {
             if (err) throw err;
             resolve(results);
         });

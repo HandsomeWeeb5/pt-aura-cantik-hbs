@@ -72,7 +72,7 @@ $(function(){
         // console.log(table_row);
         $(table_row).toggleClass('bg-primary').toggleClass('text-light');
         
-        let tr_idBarang_pmk = $(table_row).find("#id_barang").text();
+        let tr_idBarang_pmk = $(table_row).parent("td").attr("id");
         let tr_deskripsiBrg_pmk = $(table_row).find("#deskripsi_brg_pm").text();
         let tr_tglPemasukan_pmk = $(table_row).find("#tgl_pemasukan_pm").text();
         let tr_jenisBarang_pmk = $(table_row).find("#jenis_barang_pm").text();
