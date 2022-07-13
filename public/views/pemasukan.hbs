@@ -44,7 +44,7 @@
                                         <!--- FLT. TGL --->
                                         <div class="mb-2">
                                             <label for="tgl_pemasukan">Tgl. Pemasukan</label>
-                                            <input type="text" class="form-control" id="tgl_pemasukan" placeholder="mm-ddd-yyyy" name="tgl_pemasukan" value="">
+                                            <input type="date" class="form-control" id="tgl_pemasukan" placeholder="mm-dddd-yyyy" name="tgl_pemasukan" value="">
                                         </div>
                                         <!--- FLT. DOKUM --->
                                         <div class="mb-2">
@@ -104,7 +104,7 @@
                     {{!#each entry}}
                         <thead class="table-secondary sticky-top">
                             <tr>
-                                <th scope="col"><input type="checkbox" name="select-all-items" id="select-all-items"></th>
+                                <th scope="col">#</th>
                                 <th scope="col" class="w-50">Deskripsi Barang</th>
                                 <th scope="col">Tgl. Pemasukan</th>
                                 <th scope="col">Jenis Barang</th>
@@ -120,23 +120,23 @@
                         </thead>
                         <tbody>
                             {{#each data.results}}
-                            <tr>
-                                <td><input type="checkbox" name="select-item" id="select-item"></td>
-                                <td>{{this.deskripsi_brg}}</td>
-                                <td>{{this.tgl_pemasukan}}</td>
-                                <td>{{this.jenis_barang}}</td>
-                                <td>{{this.waktu}}</td>
-                                <td>{{this.merek_brg}}</td>
-                                <td>{{this.no_dokumen_bc}}</td>
-                                <td id="harga_per_unit">{{this.harga_per_unit}}</td>
-                                <td>{{this.vendor_item}}</td>
-                                <td>{{this.hs_code}}</td>
-                                <td>{{this.barcode_brg}}</td>
+                            <tr style="background-color: white;">
+                                <td id="{{this.id_barang}}"><input type="checkbox" name="select-item" id="select-item"></td>
+                                <td id="deskripsi_brg_pm">{{this.deskripsi_brg}}</td>
+                                <td id="tgl_pemasukan_pm">{{this.tgl_pemasukan}}</td>
+                                <td id="jenis_barang_pm">{{this.jenis_barang}}</td>
+                                <td id="waktu_pm">{{this.waktu}}</td>
+                                <td id="merek_brg_pm">{{this.merek_brg}}</td>
+                                <td id="no_dokumen_bc_pm">{{this.no_dokumen_bc}}</td>
+                                <td id="harga_per_unit_pm">{{this.harga_per_unit}}</td>
+                                <td id="vendor_item_pm">{{this.vendor_item}}</td>
+                                <td id="hs_code_pm">{{this.hs_code}}</td>
+                                <td id="barcode_brg_pm">{{this.barcode_brg}}</td>
                                 <td>
                                     <button class="btn btn-warning">
                                         <strong>Edit</strong>
                                     </button>
-                                    <button class="btn btn-warning">
+                                    <button class="btn btn-warning" id="view_image_pm">
                                         <strong>View</strong>
                                     </button>
                                 </td>
@@ -160,8 +160,8 @@
             <!--- BUTTON GROUP FOR TABLE --->
             <div class="container-lg d-flex my-4 justify-content-center">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add-item-modal">Tambah Barang</button>
-                <button type="button" class="btn btn-danger ms-2">Hapus Barang</button>
-                <button type="button" class="btn btn-primary ms-2">Kirim Barang</button>
+                <button type="button" class="btn btn-danger ms-2" id="hapus-btn">Hapus Barang</button>
+                <button type="button" class="btn btn-primary ms-2" id="kirim-btn">Kirim Barang</button>
             </div>
 
         </div>

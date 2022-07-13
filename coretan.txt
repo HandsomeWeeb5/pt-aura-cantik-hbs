@@ -1,45 +1,5 @@
-<tr class="d-flex">
-                            <td><input type="checkbox" name="select-item" id="select-item"></td>
-                            <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
-                            <td class="th-tgl-pemasukan">21/06/2022</td>
-                            <td class="th-jenis-brg">Kosmetik</td>
-                            <td class="th-waktu">14:59:01</td>
-                            <td class="th-merek-brg">Master</td>
-                            <td class="th-no-dokumen-bc">000000</td>
-                            <td class="th-harga-per-unit">69.50</td>
-                            <td class="th-vendor-item">VHS123</td>
-                            <td class="th-hs-code">71170000</td>
-                            <td class="th-barcode-brg">76543210</td>
-                            <td class="th-aksi-data">
-                                <button class="btn btn-warning">
-                                    <strong>Edit</strong>
-                                </button>
-                                <button class="btn btn-warning">
-                                    <strong>View</strong>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="d-flex">
-                            <td><input type="checkbox" name="select-item" id="select-item"></td>
-                            <td class="th-deskripsi-brg">Produk Kosmetik Master</td>
-                            <td class="th-tgl-pemasukan">21/06/2022</td>
-                            <td class="th-jenis-brg">Kosmetik</td>
-                            <td class="th-waktu">14:59:01</td>
-                            <td class="th-merek-brg">Master</td>
-                            <td class="th-no-dokumen-bc">000000</td>
-                            <td class="th-harga-per-unit">69.50</td>
-                            <td class="th-vendor-item">VHS123</td>
-                            <td class="th-hs-code">71170000</td>
-                            <td class="th-barcode-brg">76543210</td>
-                            <td class="th-aksi-data">
-                                <button class="btn btn-warning">
-                                    <strong>Edit</strong>
-                                </button>
-                                <button class="btn btn-warning">
-                                    <strong>View</strong>
-                                </button>
-                            </td>
-                        </tr>
+
+
 
 let imageStorage = multer.diskStorage({
       destination: (req, file, callback) => {
@@ -66,3 +26,43 @@ const upload_imagefile = (req, res, next) => {
 const upload_PDFfile = (req, res, next) => {
       uploadPDF.single("create-pdffile")
 };
+
+
+const multer = require('multer');
+const storage = require('../../config/storage.config');
+
+let imageStorage = multer.diskStorage(storage.imageStorage);
+let pdfStorage = multer.diskStorage(storage.pdfStorage);
+
+let uploadImage = multer({ storage: imageStorage });
+let uploadPDF = multer({ storage: pdfStorage });
+
+module.exports = {
+    uploadImage: uploadImage,
+    uploadPDF: uploadPDF
+}
+
+let imageStorage = {
+    destination: (req, file, callback) => {
+        callback(null, 'public/upload/img')
+    },
+    filename: (req, file, callback) => {
+        callback(null, Date.now() + '-' +file.originalname)
+    }
+};
+
+let pdfStorage = {
+    destination: (req, file, callback) => {
+        callback(null, 'public/upload/pdf')
+    },
+    filename: (req, file, callback) => {
+        callback(null, file.fieldname)
+    }
+}
+
+module.exports = {
+    imageStorage: imageStorage,
+    pdfStorage: pdfStorage
+}
+
+<label class="text-danger" style="font-size: 14px;">Deskripsi diisi minimal 11 karakter.</label>

@@ -7,6 +7,10 @@
     max-width: 120%;
 };
 
+.table-color{
+    background-color: whitesmoke !important;
+}
+
 /* ========= TABLE PENGELUARAN ========== */
 .table-container-size-pgl{
     height: 300px;
@@ -18,3 +22,9 @@
         width: 300px;
     }
 };
+
+/* ======== SELECTED ROWS = HIGHLIGHT ======== */
+.selected {
+    background-color: #d86901;
+    color: white;
+}
