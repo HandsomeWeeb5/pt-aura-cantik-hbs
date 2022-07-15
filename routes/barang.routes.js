@@ -10,7 +10,8 @@ const initBarangRoutes = (app) => {
     router.get("/", pemasukan.viewDataPerPage);
     router.post("/filter", pemasukan.searchByFilter);
     router.post("/create", uploadImage.single('img_barang'), pemasukan.createNewData);
-    // router.delete("/delete", pemasukan.removeDataByIDs)
+    router.post("/delete", pemasukan.deleteSelectedRowById);
+    // router.delete("/del:id", pemasukan.deleteById);
 
     return app.use("/", router);
 };

@@ -10,6 +10,7 @@ const handlebars = require('express-handlebars');
 // Import Modules
 const { handlebarsViewEngine } = require('./config/view.config');
 const initBarangRoutes = require('./routes/barang.routes');
+const bodyParser = require('body-parser');
 
 // Access env file untuk menjalankan sistem
 require('dotenv').config();
@@ -17,12 +18,24 @@ require('dotenv').config();
 const PORT = process.env.PORT || 7200
 
 const app = express();
+// Parsing (uraikan) data JSON dari Database
+app.use(express.json())
+// app.use(bodyParser.json());
+/*
+app.use(bodyParser.json({
+    strict: false
+}));
+*/
+
 // Parsing (uraikan) data form
 app.use(express.urlencoded(
     { extended: true }
 ))
-// Parsing (uraikan) data JSON dari Database
-app.use(express.json())
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }))
+
+
 
 // aktifkan untuk perizinan CORS
 app.use(cors());

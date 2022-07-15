@@ -73,13 +73,50 @@ const createNewData = async(req, res, next) => {
         res.redirect('/');
     }
     
-
 };
+
+const deleteSelectedRowById = async(req, res) => {
+    //* Request id_barang's array into server
+    let dataObj = req.body.dataArr; //? ==> BUG: req.body.dataArr = ['12', '12'] (Data from Hapus Btn duplicate result)
+    // let id = [];
+    let arr = [];
+    dataObj.map((value) => arr.push(value.id_barang));
+
+    try{
+        await barangService.deleteMultipleData(arr);
+        console.log("Penghapusan Data-data sukses");
+        // console.log("Penambahan data sukses"); 
+        //console.log(arr);
+        res.redirect('/');
+    } catch (err) {
+        console.log("Penghapusan Data Gagal");
+        throw err;
+    }
+    
+};
+
+const deleteById = async(req, res) => {
+    let id = req.params.id;
+
+    try {
+        const result = await barangService.deleteDataById(id);
+        if(result){
+            res.json({ success: true, message: "Penghapusan Sukses" });
+        }
+    } catch (err){
+        console.log("Penghapusan Gagal");
+        throw err;
+    } finally {
+        res.redirect('/');
+    }
+}
 
 module.exports = {
     viewDataPerPage: viewDataPerPage,
     searchByFilter: searchByFilter,
-    createNewData: createNewData
+    createNewData: createNewData,
+    deleteSelectedRowById: deleteSelectedRowById,
+    deleteById: deleteById
 }
 
 /*

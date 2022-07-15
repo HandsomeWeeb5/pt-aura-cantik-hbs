@@ -40,11 +40,9 @@ let sql__viewByFilter = `
 // 9(?) => barcode_barang;
 // 10(?) => gambar_barang;
 
-let sql__deleteById = `CALL hapusBarang(?)`;
+let sql__deleteByIds = `CALL hapusBarang(?)`;
 
 let sql__insertItem = `CALL tambahkanBarang(?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-
-let sql__deleteItem = `CALL hapusBarang(?)`;
 
 const database = mysql.createConnection(dbconfig);
 database.connect((err) => {
@@ -110,11 +108,37 @@ const addNewData = (formData) => {
     })
 }; 
 
+// ? deleteDataById masih ditahap tunda pengembangan
+const deleteDataById = (idTarget) => { 
+    idTarget = parseInt(idTarget, 10);
+    return new Promise(async (resolve, reject) => {
+        database.query(sql__deleteByIds, [idTarget], (err, result) => {
+            if(err) throw err;
+            if(result){
+                resolve("Penghapusan Data Sukses");
+            } else {
+                reject(false);
+            }
+        });
+    });
+};
+
+const deleteMultipleData = (numbersArray) => {
+    return new Promise(async (resolve, reject) => {
+        database.query('CALL hapusBarang(' + numbersArray + ')', (err, result) => {
+            if (err) throw err;
+            resolve(result)
+        });
+    })
+}
+
 module.exports = {
     //getDataPerPage: getDataPerPage,
     getDataByFilter: getDataByFilter,
     getDataBarang: getDataBarang,
     addNewData: addNewData,
+    deleteMultipleData: deleteMultipleData,
+    // deleteDataById: deleteDataById,
     totalHargaDataBarang: totalHargaDataBarang,
     countAllItem_in_Table: countAllItem_in_Table
 }

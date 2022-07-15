@@ -115,6 +115,7 @@
                                 <th scope="col">Vendor Item</th>
                                 <th scope="col">HS Code</th>
                                 <th scope="col">Barcode Barang</th>
+                                <th scope="col">Gambar Barang</th>
                                 <th scope="col">Aksi Data</th>
                             </tr>
                         </thead>
@@ -133,11 +134,20 @@
                                 <td id="hs_code_pm">{{this.hs_code}}</td>
                                 <td id="barcode_brg_pm">{{this.barcode_brg}}</td>
                                 <td>
+                                    <div class="picture-frame">
+                                        {{#if this.img_barang}}
+                                            <img src="upload/img/{{this.img_barang}}" alt="{{this.img_barang}}" id="image-item">
+                                        {{else}}
+                                            <img src="asset/img/no-image.png" alt="No Image Found" id="image-item">
+                                        {{/if}}
+                                    </div>
+                                </td>
+                                <td>
                                     <button class="btn btn-warning">
                                         <strong>Edit</strong>
                                     </button>
-                                    <button class="btn btn-warning" id="view_image_pm">
-                                        <strong>View</strong>
+                                    <button type="button" class="btn btn-danger" id="delete_data">
+                                        <strong>Hapus</strong>
                                     </button>
                                 </td>
                             </tr>   
@@ -166,5 +176,17 @@
 
         </div>
 
-        {{> add_item_modal }} 
+        {{> add_item_modal }}
+        <!--- IMAGE BUTTON MODAL --->
+        <!-- The Modal -->
+        <!--- <div id="myModal" class="modal"> --->
+            <!-- The Close Button -->
+            <!--- <span class="close">&times;</span> --->
+
+            <!-- Modal Content (The Image) -->
+            <!--- <img class="modal-content" id="img01"> -->
+
+            <!-- Modal Caption (Image Text) -->
+            <!--- <div id="caption"></div> --->
+        <!--- </div> --->
     </section>

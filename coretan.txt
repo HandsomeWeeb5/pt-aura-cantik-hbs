@@ -66,3 +66,46 @@ module.exports = {
 }
 
 <label class="text-danger" style="font-size: 14px;">Deskripsi diisi minimal 11 karakter.</label>
+
+dataPlace = [
+    { 
+        barcode_barang: "54534100908000"
+        deskripsi_brg: "Rexona Deodorant"
+        harga_per_unit: "68.99"
+        hs_code: "71180090"
+        id_barang: "13"
+        jenis_barang: "Kosmetik"
+        merek_barang: "Rexona"
+        no_dokumen_bc: "000004"
+        tgl_pemasukan: "12-July-2022"
+        vendor_item: "REXONA123"
+        waktu: "09:29:14"
+    }
+]
+
+idArray di-map ambil id_barang key:
+idArray = [ "13" ]
+
+let obj = {
+  0: {
+    id_cars: 1,
+    car_type: "Minivan",
+    color: "White"
+  },
+  1: {
+    id_cars: 2,
+    car_type: "Taxi",
+    color: "Yellow"
+  }
+};
+
+let newObj = {};
+let arr = [];
+
+for(let [i] of Object.keys(obj)){
+  newObj.id_cars = obj[i].id_cars;
+  arr.push(newObj);
+};
+
+console.log(arr);
+// console.log(obj[0].id_cars);
