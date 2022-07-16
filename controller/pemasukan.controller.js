@@ -29,8 +29,6 @@ const searchByFilter = async(req, res) => {
         harga_per_unit: req.body.harga_per_unit,
         jenis_barang: req.body.jenis_barang
     };
-    
-    // let results = await barangService.getDataByFilter(tgl_pemasukan, no_dokumen_bc, waktu, merek_brg, harga_per_unit, jenis_barang);
 
     let results = await barangService.getDataByFilter(filterData);
     
@@ -77,17 +75,13 @@ const createNewData = async(req, res, next) => {
 
 const deleteSelectedRowById = async(req, res) => {
     //* Request id_barang's array into server
-    let dataObj = req.body.dataArr; //? ==> BUG: req.body.dataArr = ['12', '12'] (Data from Hapus Btn duplicate result)
-    // let id = [];
-    let arr = [];
-    dataObj.map((value) => arr.push(value.id_barang));
+    let dataObj = req.body.dataArr;
+    let arrayString = dataObj.toString();
 
     try{
-        await barangService.deleteMultipleData(arr);
+        await barangService.deleteMultipleData(arrayString);
         console.log("Penghapusan Data-data sukses");
-        // console.log("Penambahan data sukses"); 
-        //console.log(arr);
-        res.redirect('/');
+        // res.json({ success: true });
     } catch (err) {
         console.log("Penghapusan Data Gagal");
         throw err;
@@ -95,19 +89,20 @@ const deleteSelectedRowById = async(req, res) => {
     
 };
 
-const deleteById = async(req, res) => {
-    let id = req.params.id;
+const copySelectedRowToCart = async(req, res) => {
+    //* Request id_barang's array into server
+    let dataObj = req.body.dataArr;
+    let arrayString = dataObj.toString();
+    let result;
 
-    try {
-        const result = await barangService.deleteDataById(id);
-        if(result){
-            res.json({ success: true, message: "Penghapusan Sukses" });
-        }
-    } catch (err){
-        console.log("Penghapusan Gagal");
+    try{
+        // console.log(arrayString);
+        await barangService.copyDataToDeliveryCart(arrayString);
+        console.log(result);
+        console.log("Pengiriman Data-data sukses");
+    } catch (err) {
+        console.log("Pengiriman Data Sukses");
         throw err;
-    } finally {
-        res.redirect('/');
     }
 }
 
@@ -116,7 +111,7 @@ module.exports = {
     searchByFilter: searchByFilter,
     createNewData: createNewData,
     deleteSelectedRowById: deleteSelectedRowById,
-    deleteById: deleteById
+    copySelectedRowToCart: copySelectedRowToCart
 }
 
 /*

@@ -16,7 +16,7 @@
                     <a href="/penarikan" class="nav-link link-danger" aria-current="page">Penarikan Barang</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/histori" class="nav-link active" aria-current="page">Histori Barang</a>
+                    <a href="/histori" class="nav-link active" aria-current="page">Histori Laporan</a>
                 </li>
             </ul>
             
@@ -33,67 +33,12 @@
                     </form>
                     <!--- HISTORI LIST --->
                     <ul class="histori-list overflow-auto d-block mt-3 mb-2 border">
-                        <!--- LAMPIRAN ITEM PEMASUKAN --->
-                        <li class="d-block mb-2">
-                            <div class="pemasukan-header d-flex justify-content-between p-2">
-                                <div class="btn btn-warning">
-                                    <span style="color: rgb(85, 80, 6);">
-                                        <strong>Pemasukan</strong>
-                                    </span>
-                                </div>
-                                <span class="d-block" style="color: white;">
-                                    <strong>Waktu Penerimaan: 05/08/2021</strong>
-                                </span>
-                            </div>
-                            <div class="pemasukan-body d-flex justify-content-between">
-                                <div>
-                                    <p>
-                                        <strong>Deskripsi Barang:</strong>
-                                         Produk Kosmetik Master DMM
-                                    </p>
-                                    <p>
-                                        <strong>Tgl. Pemasukan:</strong>
-                                         20/01/2020
-                                    </p>
-                                    <p>
-                                        <strong>Jenis Barang:</strong>
-                                         Kosmetik
-                                    </p>
-                                    <p>
-                                        <strong>No. Dokumen BC:</strong>
-                                         000000
-                                    </p>
-                                </div>
-                                <div>
-                                    <p>
-                                        <strong>Vendor Item:</strong>
-                                         VHSKOSM2321
-                                    </p>
-                                    <p>
-                                        <strong>HS Code:</strong>
-                                         711823200
-                                    </p>
-                                    <p>
-                                        <strong>Barcode Barang:</strong>
-                                        7611232141290
-                                    </p>
-                                </div>
-                                <div>
-                                    <img src="assets/img/profile.jpg" alt="foto_produk_terima_barang" class="product-img">
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center pemasukan-body">
-                                <a type="button" href="#" class="btn btn-danger">
-                                    <strong>Hapus Item</strong>
-                                </a>
-                            </div>
-                        </li>
 
                         <!--- LAMPIRAN ITEM PENGELUARAN --->
                         <li class="d-block mb-2">
                             <div class="pengeluaran-header d-flex justify-content-between p-2">
                                 <div class="btn btn-info">
-                                    <strong>Pemasukan</strong>
+                                    <strong>Pengeluaran</strong>
                                 </div>
                                 <span class="d-block" style="color: white;">
                                     <strong>Waktu Pengeluaran: 12/08/2021</strong>
@@ -123,37 +68,13 @@
                                         </p>
                                     </div>
                                 </div>
-                                <!--- PENGELUARAN BARANG TABLE --->
-                                <div class="container-fluid">
-                                    <table class="table table-bordered mx-auto">
-                                        <thead class="table-secondary">
-                                            <th>Lampiran Index</th>
-                                            <th>Jumlah</th>
-                                            <th>Barcode Barang (Reff)</th>
-                                        </thead>
-                                        <tbody class="table-light">
-                                            <tr>
-                                                <td>KOSMETIK LA PRAIRE DF6</td>
-                                                <td>3 PCS</td>
-                                                <td>BC 2.3 000942/03 Sept 2019</td>
-                                            </tr>
-                                            <tr>
-                                                <td>KOSMETIK LA PRAIRE DF6</td>
-                                                <td>3 PCS</td>
-                                                <td>BC 2.3 000942/03 Sept 2019</td>
-                                            </tr>
-                                            <tr>
-                                                <td>KOSMETIK LA PRAIRE DF6</td>
-                                                <td>3 PCS</td>
-                                                <td>BC 2.3 000942/03 Sept 2019</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
                             <div class="d-flex justify-content-center pengeluaran-body">
-                                <a type="button" href="#" class="btn btn-danger">
+                                <a type="button" href="#" class="btn btn-danger" id="delete_history">
                                     <strong>Hapus Item</strong>
+                                </a>
+                                <a type="button" href="#" class="btn btn-success mx-2" id="download_archive">
+                                    <strong>Download PDFs</strong>
                                 </a>
                             </div>
                         </li>
@@ -192,53 +113,19 @@
                                         </p>
                                     </div>
                                 </div>
-                                <!--- PENGELUARAN BARANG TABLE --->
-                                <div class="container-fluid">
-                                    <table class="table table-bordered mx-auto">
-                                        <thead class="table-secondary">
-                                            <th>Lampiran Index</th>
-                                            <th>Jumlah</th>
-                                            <th>Barcode Barang (Reff)</th>
-                                        </thead>
-                                        <tbody class="table-light">
-                                            <tr>
-                                                <td>KOSMETIK LA PRAIRE DF6</td>
-                                                <td>3 PCS</td>
-                                                <td>BC 2.3 000942/03 Sept 2019</td>
-                                            </tr>
-                                            <tr>
-                                                <td>KOSMETIK LA PRAIRE DF6</td>
-                                                <td>3 PCS</td>
-                                                <td>BC 2.3 000942/03 Sept 2019</td>
-                                            </tr>
-                                            <tr>
-                                                <td>KOSMETIK LA PRAIRE DF6</td>
-                                                <td>3 PCS</td>
-                                                <td>BC 2.3 000942/03 Sept 2019</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
                             <div class="d-flex justify-content-center penarikan-body">
                                 <a type="button" href="#" class="btn btn-danger">
                                     <strong>Hapus Item</strong>
+                                </a>
+                                <a type="button" href="#" class="btn btn-success mx-2" id="download_archive">
+                                    <strong>Download PDFs</strong>
                                 </a>
                             </div>
                         </li>
 
                     </ul>
 
-                    <!--- PAGINATION --->
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination mt-3 justify-content-center">
-                          <li class="page-item"><a class="page-link link-dark" href="#">Previous</a></li>
-                          <li class="page-item"><a class="page-link link-dark" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link link-dark" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link link-dark" href="#">3</a></li>
-                          <li class="page-item"><a class="page-link link-dark" href="#">Next</a></li>
-                        </ul>
-                    </nav>
                 </div>
             </div>
 

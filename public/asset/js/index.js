@@ -137,23 +137,24 @@ $(function(){
         };
     
         console.log(dataPlace);
-        //* ============ Get Data From Selected Row end =========
         return dataPlace;
     })
+    //* ============ Get Data From Selected Row end =========
     
+    //* ========== DELETE SELECTED ROW TABLE =========
     $("#hapus-btn").on("click", function(ev){ 
-        // let id_barang = dataPlace.map((data) => data.id_barang);
-        // console.log(id_array);
-        // cth: array = ["23", "24"];
-        let dataObj = {...dataPlace};
+        let id_barang = dataPlace.map((data) => data.id_barang);
+        // console.log(id_barang);
+        // cth: id_barang = ["23", "24"];
+        //* let dataObj = {...dataPlace}; <= Success
         // console.log(dataObj);
-        let newObj = {};
-        let dataArr = [];
-        for (let [i] of Object.keys(dataObj)) {
-            newObj.id_barang = dataObj[i].id_barang;
-            dataArr.push(newObj);
-        };
-        console.log(dataArr);
+        //* let newObj = {}; <= Success
+        //* let dataArr = []; <= Success
+        //* for (let [i] of Object.keys(dataObj)) { <= Success
+        //*     newObj.id_barang = dataObj[i].id_barang; <= Success
+        //*     dataArr.push(newObj); <= Success
+        //* }; <= Success
+        //* console.log(dataArr); <= Success
         
         let text = "Apakah Kamu Yakin menghapus beberapa Data Barang tersebut?";
         
@@ -161,11 +162,59 @@ $(function(){
             $.ajax({
                 type: "POST",
                 url: "/delete",
-                data: { dataArr },
+                data: { 
+                    dataArr: id_barang 
+                },
                 async: true,
                 success: function(data){
                     Toastify({
-                        text: "Penghapusan data Sukses!",
+                        text: "Penghapusan data Sukses! Data Terpilih" + id_barang.length,
+                        duration: 3000,
+                        close: true,
+                        gravity: top,
+                        style: {
+                            background: "linear-gradient(to right, #00b09b, #96c93d)"
+                        }
+                    }).showToast();
+                },
+                error: function(exception){
+                    Toastify({
+                        text: "Penghapusan data Gagal, Error dari Server: " + exception,
+                        duration: 3000,
+                        close: true,
+                        gravity: top,
+                        style: {
+                            background: "linear-gradient(to right, #e01f19, #c48b54)"
+                        }
+                    }).showToast();
+                }
+            });
+            $('input[id*="select-item"]').prop('checked', false);
+            setTimeout(function(){
+              location.reload();
+            }, 5000);
+        };
+        
+    });
+    //* ========== Delete Selected Row Table End =========
+    
+    //* ========== SENT DATA SELECTED ROW TO CART ============
+    $("#kirim-btn").on("click", function(ev){
+        let id_barang = dataPlace.map((data) => data.id_barang);
+
+        let text = "Apakah Kamu Yakin mengirim beberapa Data Barang tersebut?";
+
+        if(confirm(text) === true){
+            $.ajax({
+                type: "POST",
+                url: "/send",
+                data: { 
+                    dataArr: id_barang 
+                },
+                async: true,
+                success: function(data){
+                    Toastify({
+                        text: "Keranjang data Barang Sudah Siap! Data Terpilih: " + id_barang.length,
                         duration: 3000,
                         close: true,
                         gravity: top,
@@ -187,8 +236,8 @@ $(function(){
                 }
             });
         };
-        
     });
+    //* ======= Sent Data Selected Row to Cart End =======
 
     $('button[id^="delete_data"]').on("click", function(){
         let text = "Apakah Kamu Yakin menghapus beberapa Data Barang tersebut?";

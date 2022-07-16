@@ -109,3 +109,55 @@ for(let [i] of Object.keys(obj)){
 
 console.log(arr);
 // console.log(obj[0].id_cars);
+
+<!--- R.I. NO. LAPORAN --->
+    <div>
+        <label class="form-label">Nomor Laporan:</label><br>
+        <input type="radio" class="form-check-input" name="nomor-laporan" id="auto-increment-nomor">
+        <label for="auto-increment-nomor" class="form-label">Auto-Increment (Penomoran Otomatis)</label>
+        <input type="radio" class="form-check-input" checked="false" name="nomor-laporan"
+        value="nomor-manual" id="nomor-manual">
+        <label for="nomor-manual" class="form-label">Nomor Manual: </label>
+        <input type="text" class="form-control mt-2" placeholder="Nomor Manual.." id="nomor-manual">
+    </div>
+
+<!--- PENGELUARAN BARANG TABLE --->
+    <div class="container-fluid">
+        <table class="table table-bordered mx-auto">
+            <thead class="table-secondary">
+                <th>Lampiran Index</th>
+                <th>Jumlah</th>
+                <th>Barcode Barang (Reff)</th>
+            </thead>
+            <tbody class="table-light">
+                <tr>
+                    <td>KOSMETIK LA PRAIRE DF6</td>
+                    <td>3 PCS</td>
+                    <td>BC 2.3 000942/03 Sept 2019</td>
+                </tr>
+                <tr>
+                    <td>KOSMETIK LA PRAIRE DF6</td>
+                    <td>3 PCS</td>
+                    <td>BC 2.3 000942/03 Sept 2019</td>
+                </tr>
+                <tr>
+                    <td>KOSMETIK LA PRAIRE DF6</td>
+                    <td>3 PCS</td>
+                    <td>BC 2.3 000942/03 Sept 2019</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--- PAGINATION --->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination mt-3 justify-content-center">
+            <li class="page-item"><a class="page-link link-dark" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link link-dark" href="#">1</a></li>
+            <li class="page-item"><a class="page-link link-dark" href="#">2</a></li>
+            <li class="page-item"><a class="page-link link-dark" href="#">3</a></li>
+            <li class="page-item"><a class="page-link link-dark" href="#">Next</a></li>
+        </ul>
+    </nav>
+
+    INSERT INTO tb_keranjang (deskripsi_barang, tgl_pemasukan, jenis_barang, merek_barang, no_dokumen_bc, barcode_barang, harga_per_unit) SELECT b.deskripsi_brg, d.tgl_pemasukan, j.jenis_barang, b.merek_brg, d.no_dokumen_bc, b.barcode_brg, b.harga_per_unit FROM tb_barang AS b JOIN tb_dokumen AS d ON (b.id_dokumen = d.id_dokumen) JOIN tb_jenis_barang AS j ON (b.id_jenis_brg = j.id_jenis_brg) WHERE b.deskripsi_brg IN (""); 

@@ -63,11 +63,6 @@ handlebarsViewEngine(app, handlebars.engine({
     partialsDir: `${__dirname}/public/views/partials`
 }));
 
-// ROUTE HALAMAN
-app.get('/pengeluaran', (req, res) => {
-    res.render('pengeluaran', {layout: 'index'})
-});
-
 app.get('/penarikan', (req, res) => {
     res.render('penarikan', {layout: 'index'})
 });

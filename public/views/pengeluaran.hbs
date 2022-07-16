@@ -16,7 +16,7 @@
                     <a href="/penarikan" class="nav-link link-danger" aria-current="page">Penarikan Barang</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/histori" class="nav-link link-info" aria-current="page">Histori Barang</a>
+                    <a href="/histori" class="nav-link link-info" aria-current="page">Histori Laporan</a>
                 </li>
             </ul>
 
@@ -48,7 +48,7 @@
                                 </div>
                                 <!--- TGL. PEMASUKAN INPUT --->
                                 <div>
-                                    <label for="tgl-pemasukan" class="form-label">Tanggal Pemasukan:</label>
+                                    <label for="tgl-pemasukan" class="form-label">Tgl. Dokumen Masuk:</label>
                                     <input type="text" name="tgl-pemasukan" id="jenis-dokumen">
                                 </div>
                             </div>
@@ -142,20 +142,16 @@
                                 <h4>Tambah Barang</h4>
                             </div>
                             <!--- LAMPIRAN ITEM --->
-                            <div class="row border border-dark mx-2 my-1 p-1">
-                                <div class="col-3">
+                            <div class="d-flex border border-dark my-1 p-1 justify-content-around align-items-center">
+                                <div>
                                     <strong>Reff: </strong>
                                     <span>7611773097710</span>
                                 </div>
-                                <div class="col-5">
+                                <div>
                                     <strong>Description Brg: </strong>
                                     <span>LAP Supreme Balm Cleaner</span>
                                 </div>
-                                <div class="col-2">
-                                    <strong>Qty: </strong>
-                                    <span>1 PCS</span>
-                                </div>
-                                <div class="col-2">
+                                <div>
                                     <button type="button" class="btn btn-danger">
                                         Delete 
                                         <span class="icon-trash-svgrepo-com"></span>
@@ -163,20 +159,16 @@
                                 </div>
                             </div>
                             <!--- LAMPIRAN ITEM --->
-                            <div class="row border border-dark mx-2 my-1 p-1">
-                                <div class="col-3">
+                            <div class="d-flex border border-dark my-1 p-1 justify-content-around align-items-center">
+                                <div>
                                     <strong>Reff: </strong>
                                     <span>7611773097710</span>
                                 </div>
-                                <div class="col-5">
+                                <div>
                                     <strong>Description Brg: </strong>
                                     <span>LAP Supreme Balm Cleaner</span>
                                 </div>
-                                <div class="col-2">
-                                    <strong>Qty: </strong>
-                                    <span>1 PCS</span>
-                                </div>
-                                <div class="col-2">
+                                <div>
                                     <button type="button" class="btn btn-danger">
                                         Delete 
                                         <span class="icon-trash-svgrepo-com"></span>
@@ -324,13 +316,8 @@
                                     <form>
                                         <!--- R.I. NO. LAPORAN --->
                                         <div>
-                                            <label class="form-label">Nomor Laporan:</label><br>
-                                            <input type="radio" class="form-check-input" name="nomor-laporan" id="auto-increment-nomor">
-                                            <label for="auto-increment-nomor" class="form-label">Auto-Increment (Penomoran Otomatis)</label>
-                                            <input type="radio" class="form-check-input" checked="false" name="nomor-laporan"
-                                            value="nomor-manual" id="nomor-manual">
-                                            <label for="nomor-manual" class="form-label">Nomor Manual: </label>
-                                            <input type="text" class="form-control mt-2" placeholder="Nomor Manual.." id="nomor-manual">
+                                            <label class="form-label" for="nomor-laporan">Nomor Laporan:</label><br>
+                                            <input type="text" class="form-control mt-2" id="nomor-laporan">
                                         </div>
                                         
                                         <div>

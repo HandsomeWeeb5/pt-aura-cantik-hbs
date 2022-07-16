@@ -108,39 +108,49 @@ const addNewData = (formData) => {
     })
 }; 
 
-// ? deleteDataById masih ditahap tunda pengembangan
-const deleteDataById = (idTarget) => { 
-    idTarget = parseInt(idTarget, 10);
+const deleteMultipleData = (arrayString) => {
     return new Promise(async (resolve, reject) => {
-        database.query(sql__deleteByIds, [idTarget], (err, result) => {
-            if(err) throw err;
-            if(result){
-                resolve("Penghapusan Data Sukses");
-            } else {
-                reject(false);
-            }
-        });
-    });
-};
-
-const deleteMultipleData = (numbersArray) => {
-    return new Promise(async (resolve, reject) => {
-        database.query('CALL hapusBarang(' + numbersArray + ')', (err, result) => {
+        database.query(`CALL hapusBarangBarang('${arrayString}')`, (err, result) => {
             if (err) throw err;
             resolve(result)
         });
     })
 }
 
+const copyDataToDeliveryCart = (arrayString) => {
+    return new Promise(async (resolve, reject) => {
+        database.query(`CALL kirimBarang('${arrayString}')`, (err, result) => {
+            if (err) throw err;
+            if(result){
+                resolve(result)
+            } else {
+                reject("Pengiriman Data Gagal");
+            }
+        });
+    })
+}
+
+const getDataFromCart = () => {
+    return new Promise(async (resolve, reject) => {
+        database.query('SELECT * FROM tb_keranjang', (err, result) => {
+            if(err) throw err;
+            resolve(result);
+        });
+    })
+}
+
 module.exports = {
     //getDataPerPage: getDataPerPage,
+    //TODO DB Services for Pemasukan
     getDataByFilter: getDataByFilter,
     getDataBarang: getDataBarang,
     addNewData: addNewData,
+    copyDataToDeliveryCart: copyDataToDeliveryCart,
     deleteMultipleData: deleteMultipleData,
-    // deleteDataById: deleteDataById,
     totalHargaDataBarang: totalHargaDataBarang,
-    countAllItem_in_Table: countAllItem_in_Table
+    countAllItem_in_Table: countAllItem_in_Table,
+    //TODO Services for Pengeluaran
+    getDataFromCart: getDataFromCart
 }
 
 /*
