@@ -86,7 +86,7 @@
                                 <!--- TABLE KERANJANG CONTAINER --->
                                 <div class="overflow-scroll table-container-size-pgl border mx-4 bg-light">
                                     <table class="table table-light table-bordered border table-hover table-custom-pgl">
-                                        <thead class="table-secondary">
+                                        <thead class="table-secondary sticky-top">
                                             <tr>
                                                 <!--- CHECKBOX ALL -->
                                                 <th scope="col"><input type="checkbox" name="select-all-items"id="select-all-items"></th>
@@ -101,36 +101,36 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {{#each data.results}}
                                             <tr>
                                                 <td><input type="checkbox" name="select-item" id="select-item"></td>
-                                                <td class="">Produk Kosmetik Master</td>
-                                                <td class="">21/06/2022</td>
-                                                <td class="">Kosmetik</td>
-                                                <td class="">Master</td>
-                                                <td class="">000000</td>
-                                                <td class="">76543210</td>
-                                                <td class="">69.50</td>
+                                                <td class="">{{this.deskripsi_barang}}</td>
+                                                <td class="">{{this.tgl_pemasukan}}</td>
+                                                <td class="">{{this.jenis_barang}}</td>
+                                                <td class="">{{this.merek_barang}}</td>
+                                                <td class="">{{this.no_dokumen_bc}}</td>
+                                                <td class="">{{this.barcode_barang}}</td>
+                                                <td class="">{{this.harga_per_unit}}</td>
                                             </tr>
+                                            {{/each}}
                                         </tbody>
                                     </table>
                                 </div>
                                 <!--- TABLE UTILITIES --->
-                                <div class="my-3 mx-4">
-                                    <!--- DELETE SELECTED ITEM FROM TABLE BUTTON --->
-                                    <button type="button" name="delete-items-btn" id="delete-items-btn" class="btn btn-danger"><span>Hapus Barang (x)</span></button>
-                                    <!--- ADD ITEM INTO LAMPIRAN --->
-                                    <button type="button" name="add-item-lampiran" id="add-item-lampiran" class="btn btn-primary"><span>Tambah Item ke Lampiran</span></button>
-                                    <!--- INPUT ERROR FLASH FROM TABLE --->
-                                    <!---
-                                    <%# if(errors != "") { %>
-                                        <%# errors.forEach((item) => { %>
-                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                <%#- item %>
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                            </div>
-                                        <%# }); %>
-                                    <%# } %> 
-                                    --->
+                                <div class="my-3 mx-4 d-flex justify-content-between">
+                                    <div>
+                                        <!--- DELETE SELECTED ITEM FROM TABLE BUTTON --->
+                                        <button type="button" name="delete-items-btn" id="delete-items-btn" class="btn btn-danger ms-2"><span>Hapus Barang (x)</span></button>
+                                        <!--- ADD ITEM INTO LAMPIRAN --->
+                                        <button type="button" name="add-item-lampiran" id="add-item-lampiran" class="btn btn-primary"><span>Tambah Item ke Lampiran</span></button>
+                                    </div>
+                                    <div>
+                                        {{#if data.total_harga}}
+                                            <p><strong>Total Harga: {{data.total_harga}} USD</strong></p>
+                                        {{else}}
+                                            <p><strong>Total Harga: 0 USD</strong></p>
+                                        {{/if}}
+                                    </div>
                                 </div>
                             </div>
 
@@ -143,15 +143,15 @@
                             </div>
                             <!--- LAMPIRAN ITEM --->
                             <div class="d-flex border border-dark my-1 p-1 justify-content-around align-items-center">
-                                <div>
+                                <div class="barcode-barang">
                                     <strong>Reff: </strong>
                                     <span>7611773097710</span>
                                 </div>
-                                <div>
+                                <div class="deskripsi-barang">
                                     <strong>Description Brg: </strong>
                                     <span>LAP Supreme Balm Cleaner</span>
                                 </div>
-                                <div>
+                                <div class="action-btn">
                                     <button type="button" class="btn btn-danger">
                                         Delete 
                                         <span class="icon-trash-svgrepo-com"></span>
@@ -160,15 +160,15 @@
                             </div>
                             <!--- LAMPIRAN ITEM --->
                             <div class="d-flex border border-dark my-1 p-1 justify-content-around align-items-center">
-                                <div>
+                                <div class="barcode-barang">
                                     <strong>Reff: </strong>
                                     <span>7611773097710</span>
                                 </div>
-                                <div>
+                                <div class="deskripsi-barang">
                                     <strong>Description Brg: </strong>
                                     <span>LAP Supreme Balm Cleaner</span>
                                 </div>
-                                <div>
+                                <div class="action-btn">
                                     <button type="button" class="btn btn-danger">
                                         Delete 
                                         <span class="icon-trash-svgrepo-com"></span>
