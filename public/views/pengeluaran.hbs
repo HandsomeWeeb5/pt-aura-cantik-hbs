@@ -85,7 +85,7 @@
                             <div class="col">
                                 <!--- TABLE KERANJANG CONTAINER --->
                                 <div class="overflow-scroll table-container-size-pgl border mx-4 bg-light">
-                                    <table class="table table-light table-bordered border table-hover table-custom-pgl">
+                                    <table class="table table-light table-bordered border table-hover table-custom-pgl" id="tb_keranjang">
                                         <thead class="table-secondary sticky-top">
                                             <tr>
                                                 <!--- CHECKBOX ALL -->
@@ -103,14 +103,14 @@
                                         <tbody>
                                             {{#each data.results}}
                                             <tr>
-                                                <td><input type="checkbox" name="select-item" id="select-item"></td>
-                                                <td class="">{{this.deskripsi_barang}}</td>
-                                                <td class="">{{this.tgl_pemasukan}}</td>
-                                                <td class="">{{this.jenis_barang}}</td>
-                                                <td class="">{{this.merek_barang}}</td>
-                                                <td class="">{{this.no_dokumen_bc}}</td>
-                                                <td class="">{{this.barcode_barang}}</td>
-                                                <td class="">{{this.harga_per_unit}}</td>
+                                                <td id="{{this.id_keranjang}}"><input type="checkbox" name="select-item-cart" id="select-item-cart"></td>
+                                                <td id="deskripsi_brg_pgl">{{this.deskripsi_barang}}</td>
+                                                <td id="tgl_pemasukan_pgl">{{this.tgl_pemasukan}}</td>
+                                                <td id="jenis_barang_pgl">{{this.jenis_barang}}</td>
+                                                <td id="merek_barang_pgl">{{this.merek_barang}}</td>
+                                                <td id="no_dokumen_pgl">{{this.no_dokumen_bc}}</td>
+                                                <td id="barcode_brg_pgl">{{this.barcode_barang}}</td>
+                                                <td id="harga_per_unit_pgl">{{this.harga_per_unit}}</td>
                                             </tr>
                                             {{/each}}
                                         </tbody>
@@ -120,9 +120,9 @@
                                 <div class="my-3 mx-4 d-flex justify-content-between">
                                     <div>
                                         <!--- DELETE SELECTED ITEM FROM TABLE BUTTON --->
-                                        <button type="button" name="delete-items-btn" id="delete-items-btn" class="btn btn-danger ms-2"><span>Hapus Barang (x)</span></button>
+                                        <button type="button" name="delete-items-btn" id="delete-cart-items-btn" class="btn btn-danger ms-2">Hapus Barang</button>
                                         <!--- ADD ITEM INTO LAMPIRAN --->
-                                        <button type="button" name="add-item-lampiran" id="add-item-lampiran" class="btn btn-primary"><span>Tambah Item ke Lampiran</span></button>
+                                        <button type="button" name="add-item-lampiran" id="add-lampiran-btn" class="btn btn-primary">Tambah Item ke Lampiran</button>
                                     </div>
                                     <div>
                                         {{#if data.total_harga}}

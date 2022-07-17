@@ -93,12 +93,10 @@ const copySelectedRowToCart = async(req, res) => {
     //* Request id_barang's array into server
     let dataObj = req.body.dataArr;
     let arrayString = dataObj.toString();
-    let result;
 
     try{
         // console.log(arrayString);
         await barangService.copyDataToDeliveryCart(arrayString);
-        console.log(result);
         console.log("Pengiriman Data-data sukses");
     } catch (err) {
         console.log("Pengiriman Data Sukses");

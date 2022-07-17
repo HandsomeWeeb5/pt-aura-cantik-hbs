@@ -35,33 +35,18 @@ $(function(){
             fileReader.readAsDataURL(file);
         }
     });
+    //* ========== PREVIEW IMAGE BEFORE UPLOAD ======== 
 
+    //* ========== RESET FORM BUTTON ================
     $('#pemasukan_reset').on('click', function(){
         $("#image-uploaded").css("display", "none");
         $(".image-wrapper").css("display", "flex");
     }); 
-
-    const image_item = document.getElementById("image_item");
-
-    // $("img[id$=image-item]").on("click", function(){
-    //     $("#myModal").css("display", "block");
-    //     $("#img01").attr("src", $(this));
-    //     $("#caption").append(`<p>${image_item.alt}</p>`);  
-    // });
-    // //$("#caption").html($(this).attr("alt", $(this)));
-// 
-    // $(".close").on("click", function(){
-    //         $("#myModal").css("display", "none");
-    //         $(this).css("display", "block");
-    // })  
-
-
-    var tb_rows_length = $('.clickable_rows').length; // <= checked
+    //* ========== Reset Form Button End ==============
 
     //* ========== GET DATA FROM SELECTED ROW =========
     let dataPlace = [];
     let count = 0;
-    let ids = [];
     
     function dataBarang(
         id_barang,
@@ -341,7 +326,7 @@ $(function(){
                 contentType: false,
                 success: function(data){
                     Toastify({
-                        text: "Pengiriman data Sukses, result: " + data,
+                        text: "Pembuatan data Sukses, result: ",
                         duration: 3000,
                         destination: "http://localhost:7000",
                         newWindow: true,
@@ -356,24 +341,88 @@ $(function(){
             return false; // required to block normal submit since you used ajax
         }
     });
+
+    /*
+    TODO#########################################################
+    TODO##########      Pengeluaran Barang    ###################
+    TODO##########################################################
+    */
+
+    let dataPlace_pengeluaran = [];
+    let count_pengeluaran = 0;
+
+    function dataKeranjang(
+        id_keranjang,
+        deskripsi_barang,
+        tgl_pemasukan,
+        jenis_barang,
+        merek_barang,
+        no_dokumen_bc,
+        barcode_barang,
+        harga_per_unit,
+    ){
+        this.id_keranjang = id_keranjang;
+        this.deskripsi_barang = deskripsi_barang;
+        this.tgl_pemasukan = tgl_pemasukan;
+        this.jenis_barang = jenis_barang;
+        this.merek_barang = merek_barang;
+        this.no_dokumen_bc = no_dokumen_bc;
+        this.harga_per_unit = harga_per_unit;
+        this.barcode_barang = barcode_barang;
+    };
+
+    /*
+    let dataKeranjangPerRows = new dataKeranjang(
+        
+    );
+    */
+
+    $('input[id^="select-item-cart"]').on('click', function(){
+        let table_row_pgl = $(this).closest('tr');
+
+        $(table_row_pgl).toggleClass('bg-primary').toggleClass('text-light');
+
+        let tr_idKeranjang = $(this).parent("td").attr("id");
+        let tr_deskripsiBrg_pgl = $(table_row_pgl).find("#deskripsi_brg_pgl").text();
+        let tr_tglPemasukan_pgl = $(table_row_pgl).find("#tgl_pemasukan_pgl").text();
+        let tr_jenisBarang_pgl = $(table_row_pgl).find("#jenis_barang_pgl");
+        let tr_merekBarang_pgl = $(table_row_pgl).find("#merek_barang_pgl");
+        let tr_noDokumenBC_pgl = $(table_row_pgl).find("#no_dokumen_pgl");
+        let tr_barcodeBarang_pgl = $(table_row_pgl).find("#barcode_brg_pgl");
+        let tr_hargaPerUnit_pgl = $(table_row_pgl).find("#harga_per_unit_pgl");
+
+        let dataKeranjangPerRows = new dataKeranjang(
+            tr_idKeranjang,
+            tr_deskripsiBrg_pgl,
+            tr_tglPemasukan_pgl,
+            tr_jenisBarang_pgl,
+            tr_merekBarang_pgl,
+            tr_noDokumenBC_pgl,
+            tr_barcodeBarang_pgl,
+            tr_hargaPerUnit_pgl
+        );
+
+        if($(this).is(':checked')){
+            dataPlace_pengeluaran.push(dataKeranjangPerRows);
+
+            let totalSelected_pgl = count_pengeluaran += 1;
+            $("#delete-cart-items-btn").html(`Hapus Barang <span>(${totalSelected_pgl})</span>`);
+            $("#add-lampiran-btn").html(`Tambah Item ke Lampiran <span>(${totalSelected_pgl})</span>`)
+        } else {
+            let totalSelected_pgl = count_pengeluaran -= 1;
+            dataPlace_pengeluaran = $.grep(dataPlace_pengeluaran, function(obj){ 
+                return obj.id_keranjang !== tr_idKeranjang; 
+            });
+
+            $("#delete-cart-items-btn").html(`Hapus Barang <span>(${totalSelected_pgl})</span>`);
+            $("#add-lampiran-btn").html(`Tambah Item ke Lampiran <span>(${totalSelected_pgl})</span>`);
+        };
+
+        console.log(dataPlace_pengeluaran);
+        return dataPlace_pengeluaran;
+    });
 });
 
-//* ========== Preview Image Before Upload end ========
-
-    //var tb_rows_length = $('.clickable_rows').length; // <= checked
 
 
-
-
-    
-
-
-/*
-$(".use-address").click(function() {
-    var $row = $(this).closest("tr");    // Find the row
-    var $text = $row.find(".nr").text(); // Find the text
-    
-    // Let's test it out
-    alert($text);
-});
-*/
+ 
