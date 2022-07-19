@@ -8,7 +8,7 @@ const viewDataPerPage = async(req, res) => {
     let totalPrice = await barangService.totalHargaDataBarang();
     let total_harga = totalPrice[0].total_harga;
     
-    res.render('pemasukan', {
+    res.render('penyimpanan', {
         layout: 'index', 
         data: { 
             results,
@@ -38,7 +38,7 @@ const searchByFilter = async(req, res) => {
     let totalPrice = await barangService.totalHargaDataBarang();
     let total_harga = totalPrice[0].total_harga;
 
-    res.render('pemasukan', {
+    res.render('penyimpanan', {
         layout: 'index',
         data: {
             results,

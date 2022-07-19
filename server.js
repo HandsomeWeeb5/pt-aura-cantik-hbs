@@ -63,10 +63,6 @@ handlebarsViewEngine(app, handlebars.engine({
     partialsDir: `${__dirname}/public/views/partials`
 }));
 
-app.get('/penarikan', (req, res) => {
-    res.render('penarikan', {layout: 'index'})
-});
-
 app.get('/histori', (req, res) => {
     res.render('histori', {layout: 'index'})
 });

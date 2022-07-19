@@ -7,13 +7,10 @@
             <!--- NAVIGATION TABS --->
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a href="/" class="nav-link link-success" aria-current="page">Pemasukan Barang</a>
+                    <a href="/" class="nav-link link-success" aria-current="page">Penyimpanan Barang</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/pengeluaran" class="nav-link active" aria-current="page">Pengeluaran Barang</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/penarikan" class="nav-link link-danger" aria-current="page">Penarikan Barang</a>
+                    <a href="/pencetakan" class="nav-link active" aria-current="page">Pencetakan Laporan</a>
                 </li>
                 <li class="nav-item">
                     <a href="/histori" class="nav-link link-info" aria-current="page">Histori Laporan</a>
@@ -25,16 +22,20 @@
 
                 <!--- FORM INPUT LAMPIRAN PPB-TBB CONTAINER --->
                 <div class="container p-3 bg-warning rounded">
-                    <form action="" method="post">
+                    <form action="" method="post" id="keranjang_item">
                         
                         <!--- FIRST ROW --->
                         <div class="row my-1">
-                            <div class="d-flex">
-                                <!--- NO. DOKUMEN BC MIN & MAX INPUT --->
-                                <label for="no-dokumen-bc">No. Dokumen BC:</label>
-                                <input type="text" name="min-no-dokumen-bc" id="no-dokumen-bc">
-                                <span> - </span>
-                                <input type="text" name="max-no-dokumen-bc" id="no-dokumen-bc">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <!--- NO. DOKUMEN BC MIN & MAX INPUT --->
+                                    <label for="no_dokumen_bc_lampiran">No. Dokumen BC:</label>
+                                    <input type="text" name="no_dokumen_bc_lampiran" id="no_dokumen_bc_lampiran" class="form-control">
+                                </div>
+                                <div>
+                                    <label for="merek_lampiran">Merek Barang: </label>
+                                    <input type="text" name="merek_lampiran" id="merek_lampiran" class="form-control">
+                                </div>
                             </div>
                         </div>
 
@@ -43,13 +44,23 @@
                             <div class="d-flex justify-content-between">
                                 <!--- JENIS DOKUMEN INPUT --->
                                 <div>
-                                    <label for="jenis-dokumen" class="form-label">Jenis Dokumen:</label>
-                                    <input type="text" name="jenis-dokumen" id="jenis-dokumen">
+                                    <label for="jenis_dokumen">Jenis Dokumen:</label>
+                                    <input type="text" name="jenis_dokumen" id="jenis_dokumen" class="form-control">
                                 </div>
                                 <!--- TGL. PEMASUKAN INPUT --->
                                 <div>
-                                    <label for="tgl-pemasukan" class="form-label">Tgl. Dokumen Masuk:</label>
-                                    <input type="text" name="tgl-pemasukan" id="jenis-dokumen">
+                                    <label for="tgl_dokumen_masuk_lampiran">Tgl. Dokumen Masuk:</label>
+                                    <input type="date" name="tgl_dokumen_masuk_lampiran" id="tgl_dokumen_masuk_lampiran" class="form-control">
+                                </div>
+                                <div>
+                                    <label for="jenis_barang_lampiran">Jenis Barang</label>
+                                    <select name="jenis_barang_lampiran" id="jenis_barang_lampiran" class="form-select">
+                                        <option selected> === PILIH === </option>
+                                        <option value="Kosmetik">Kosmetik</option>
+                                        <option value="Perhiasan">Perhiasan</option>
+                                        <option value="Jam Tangan">Jam Tangan</option>
+                                        <option value="Fashion">Fashion</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -57,8 +68,8 @@
                         <!--- THIRD ROW --->
                         <div class="row my-1">
                             <div class="col">
-                                <label for="index-tag">Index Tag:</label>
-                                <input type="text" name="index-tag" id="index-tag" class="ms-1">
+                                <label for="index_tag">Index Tag:</label>
+                                <input type="text" name="index_tag" id="index_tag" class="ms-1 form-control">
                             </div>
                             <div class="col">
                             <!--- INPUT ERROR FLASH --->
@@ -120,9 +131,9 @@
                                 <div class="my-3 mx-4 d-flex justify-content-between">
                                     <div>
                                         <!--- DELETE SELECTED ITEM FROM TABLE BUTTON --->
-                                        <button type="button" name="delete-items-btn" id="delete-cart-items-btn" class="btn btn-danger ms-2">Hapus Barang</button>
+                                        <button type="button" name="delete_items_btn" id="delete_cart_items_btn" class="btn btn-danger ms-2">Hapus Barang</button>
                                         <!--- ADD ITEM INTO LAMPIRAN --->
-                                        <button type="button" name="add-item-lampiran" id="add-lampiran-btn" class="btn btn-primary">Tambah Item ke Lampiran</button>
+                                        <button type="button" name="add_item_lampiran" id="add_lampiran_btn" class="btn btn-primary">Tambah Item ke Lampiran</button>
                                     </div>
                                     <div>
                                         {{#if data.total_harga}}
@@ -137,43 +148,31 @@
                         </div>
 
                         <!--- FOURTH ROW --->
-                        <div class="row my-1 bg-light mx-3 p-1">
-                            <div class="p-2 row">
+                        <div class="my-1 bg-light mx-3 p-1">
+                            <div class="p-2">
                                 <h4>Tambah Barang</h4>
                             </div>
-                            <!--- LAMPIRAN ITEM --->
-                            <div class="d-flex border border-dark my-1 p-1 justify-content-around align-items-center">
-                                <div class="barcode-barang">
-                                    <strong>Reff: </strong>
-                                    <span>7611773097710</span>
+                            <!--- LAMPIRAN ITEM CONTAINER --->
+                            <div class="border border-primary p-1" id="lampiran_item_container">
+                                <!--- LAMPIRAN ITEM --->
+                                <!---
+                                <div class="d-flex border border-dark my-1 p-1 justify-content-around align-items-center">
+                                    <div class="barcode-barang">
+                                        <strong>Reff: </strong>
+                                        <span>7611773097710</span>
+                                    </div>
+                                    <div class="deskripsi-barang">
+                                        <strong>Description Brg: </strong>
+                                        <span>LAP Supreme Balm Cleaner</span>
+                                    </div>
+                                    <div class="action-btn">
+                                        <button type="button" class="btn btn-danger" id="delete-barang">
+                                            Delete 
+                                            <span class="icon-trash-svgrepo-com"></span>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="deskripsi-barang">
-                                    <strong>Description Brg: </strong>
-                                    <span>LAP Supreme Balm Cleaner</span>
-                                </div>
-                                <div class="action-btn">
-                                    <button type="button" class="btn btn-danger">
-                                        Delete 
-                                        <span class="icon-trash-svgrepo-com"></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <!--- LAMPIRAN ITEM --->
-                            <div class="d-flex border border-dark my-1 p-1 justify-content-around align-items-center">
-                                <div class="barcode-barang">
-                                    <strong>Reff: </strong>
-                                    <span>7611773097710</span>
-                                </div>
-                                <div class="deskripsi-barang">
-                                    <strong>Description Brg: </strong>
-                                    <span>LAP Supreme Balm Cleaner</span>
-                                </div>
-                                <div class="action-btn">
-                                    <button type="button" class="btn btn-danger">
-                                        Delete 
-                                        <span class="icon-trash-svgrepo-com"></span>
-                                    </button>
-                                </div>
+                                --->
                             </div>
                         </div>
 
@@ -193,7 +192,7 @@
                                 --->
                             </div>
                             <div class="col">
-                                <button type="submit" class="btn btn-primary"><strong>Tambahkan Lampiran ke Daftar</strong></button>
+                                <button type="button" class="btn btn-primary" id="add_lampiran_list_item_btn"><strong>Tambahkan Lampiran ke Daftar</strong></button>
                             </div>
                         </div>
                     </form>
@@ -208,9 +207,9 @@
                         <div class="row">
                             <!--- DAFTAR LAMPIRAN --->
                             <div class="col-lg-8">
-                                <div class="kotak-lampiran overflow-auto" aria-label="daftar-lampiran">
+                                <div class="kotak-lampiran overflow-auto" aria-label="daftar-lampiran" id="daftar-lampiran">
                                     <!--- LAMPIRAN ITEM --->
-                                    <div class="lampiran-item border border-dark mb-3">
+                                    <div class="lampiran-item border border-dark mb-3" id="lampiran-item">
                                         <div class="d-flex justify-content-between">
                                             <h5 id="lampiran-number">Lampiran Ke: 1</h5>
                                             <button id="remove-btn">
@@ -237,10 +236,10 @@
                                                 <th scope="col">Qty</th>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>7611773097710</td>
-                                                    <td>LAP Supreme Balm Cleaner</td>
-                                                    <td>1</td>
+                                                <tr id="table-lampiran-items">
+                                                    <td id="barcode_lampiran">7611773097710</td>
+                                                    <td id="deskripsi_brg_lampiran">LAP Supreme Balm Cleaner</td>
+                                                    <td id="quantity_lampiran">1</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -257,7 +256,7 @@
                                         </div>
                                     </div>
                                     <!--- LAMPIRAN ITEM --->
-                                    <div class="lampiran-item border border-dark mb-3">
+                                    <div class="lampiran-item border border-dark mb-3" id="lampiran-item">
                                         <div class="d-flex justify-content-between">
                                             <h5 id="lampiran-number">Lampiran Ke: 1</h5>
                                             <button id="remove-btn">
@@ -327,7 +326,7 @@
                                             <input type="radio" class="form-check-input" name="tanggal-laporan"
                                             value="date-manual" id="date-manual">
                                             <label for="date-manual" class="form-label">Tanggal Manual: </label>
-                                            <input type="text" class="form-control mt-2" placeholder="Tanggal Manual.." id="date-manual">
+                                            <input type="date" class="form-control mt-2" placeholder="Tanggal Manual.." id="date-manual">
                                         </div>
 
                                         <label for="alamat-penimbunan" class="form-label">Alamat Ruang Penimbunan</label>

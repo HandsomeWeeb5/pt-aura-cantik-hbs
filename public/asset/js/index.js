@@ -1,3 +1,5 @@
+
+
 $(function(){
 
     //* ========== SEARCH BAR ===========
@@ -49,29 +51,29 @@ $(function(){
     let count = 0;
     
     function dataBarang(
-        id_barang,
-        deskripsi_brg,
-        tgl_pemasukan,
-        jenis_barang,
-        waktu,
-        merek_barang,
-        no_dokumen_bc,
-        harga_per_unit,
-        vendor_item,
-        hs_code,
-        barcode_barang
+        id_barang //id_barang,
+        // deskripsi_brg,
+        // tgl_pemasukan,
+        // jenis_barang,
+        // waktu,
+        // merek_barang,
+        // no_dokumen_bc,
+        // harga_per_unit,
+        // vendor_item,
+        // hs_code,
+        // barcode_barang
     ){
         this.id_barang = id_barang;
-        this.deskripsi_brg = deskripsi_brg;
-        this.tgl_pemasukan = tgl_pemasukan;
-        this.jenis_barang = jenis_barang;
-        this.waktu = waktu;
-        this.merek_barang = merek_barang;
-        this.no_dokumen_bc = no_dokumen_bc;
-        this.harga_per_unit = harga_per_unit;
-        this.vendor_item = vendor_item;
-        this.hs_code = hs_code;
-        this.barcode_barang = barcode_barang;
+        // this.deskripsi_brg = deskripsi_brg;
+        // this.tgl_pemasukan = tgl_pemasukan;
+        // this.jenis_barang = jenis_barang;
+        // this.waktu = waktu;
+        // this.merek_barang = merek_barang;
+        // this.no_dokumen_bc = no_dokumen_bc;
+        // this.harga_per_unit = harga_per_unit;
+        // this.vendor_item = vendor_item;
+        // this.hs_code = hs_code;
+        // this.barcode_barang = barcode_barang;
     };
 
     $('input[id^="select-item"]').on('click', function(){
@@ -82,29 +84,29 @@ $(function(){
         $(table_row).toggleClass('bg-primary').toggleClass('text-light');
         
         let tr_idBarang_pmk = $(this).parent("td").attr("id");
-        let tr_deskripsiBrg_pmk = $(table_row).find("#deskripsi_brg_pm").text();
-        let tr_tglPemasukan_pmk = $(table_row).find("#tgl_pemasukan_pm").text();
-        let tr_jenisBarang_pmk = $(table_row).find("#jenis_barang_pm").text();
-        let tr_waktu_pmk = $(table_row).find("#waktu_pm").text();
-        let tr_merekBarang_pmk = $(table_row).find("#merek_brg_pm").text();
-        let tr_noDokumenBC_pmk = $(table_row).find("#no_dokumen_bc_pm").text();
-        let tr_hargaPerUnit_pmk = $(table_row).find("#harga_per_unit_pm").text();
-        let tr_vendorItem_pmk = $(table_row).find("#vendor_item_pm").text();
-        let tr_hsCode_pmk = $(table_row).find("#hs_code_pm").text();
-        let tr_barcodeBarang_pmk = $(table_row).find("#barcode_brg_pm").text();
+        // let tr_deskripsiBrg_pmk = $(table_row).find("#deskripsi_brg_pm").text();
+        // let tr_tglPemasukan_pmk = $(table_row).find("#tgl_pemasukan_pm").text();
+        // let tr_jenisBarang_pmk = $(table_row).find("#jenis_barang_pm").text();
+        // let tr_waktu_pmk = $(table_row).find("#waktu_pm").text();
+        // let tr_merekBarang_pmk = $(table_row).find("#merek_brg_pm").text();
+        // let tr_noDokumenBC_pmk = $(table_row).find("#no_dokumen_bc_pm").text();
+        // let tr_hargaPerUnit_pmk = $(table_row).find("#harga_per_unit_pm").text();
+        // let tr_vendorItem_pmk = $(table_row).find("#vendor_item_pm").text();
+        // let tr_hsCode_pmk = $(table_row).find("#hs_code_pm").text();
+        // let tr_barcodeBarang_pmk = $(table_row).find("#barcode_brg_pm").text();
         
         let dataBarangPerRows = new dataBarang(
-            tr_idBarang_pmk,
-            tr_deskripsiBrg_pmk,
-            tr_tglPemasukan_pmk,
-            tr_jenisBarang_pmk,
-            tr_waktu_pmk,
-            tr_merekBarang_pmk,
-            tr_noDokumenBC_pmk,
-            tr_hargaPerUnit_pmk,
-            tr_vendorItem_pmk,
-            tr_hsCode_pmk,
-            tr_barcodeBarang_pmk
+            tr_idBarang_pmk
+            // tr_deskripsiBrg_pmk,
+            // tr_tglPemasukan_pmk,
+            // tr_jenisBarang_pmk,
+            // tr_waktu_pmk,
+            // tr_merekBarang_pmk,
+            // tr_noDokumenBC_pmk,
+            // tr_hargaPerUnit_pmk,
+            // tr_vendorItem_pmk,
+            // tr_hsCode_pmk,
+            // tr_barcodeBarang_pmk
         );
     
         if($(this).is(':checked')){
@@ -129,7 +131,7 @@ $(function(){
     //* ========== DELETE SELECTED ROW TABLE =========
     $("#hapus-btn").on("click", function(ev){ 
         let id_barang = dataPlace.map((data) => data.id_barang);
-        // console.log(id_barang);
+        console.log(id_barang);
         // cth: id_barang = ["23", "24"];
         //* let dataObj = {...dataPlace}; <= Success
         // console.log(dataObj);
@@ -185,7 +187,7 @@ $(function(){
     
     //* ========== SENT DATA SELECTED ROW TO CART ============
     $("#kirim-btn").on("click", function(ev){
-        let id_barang = dataPlace.map((data) => data.id_barang);
+        let id_keranjang = dataPlace.map((data) => data.id_barang);
 
         let text = "Apakah Kamu Yakin mengirim beberapa Data Barang tersebut?";
 
@@ -194,7 +196,7 @@ $(function(){
                 type: "POST",
                 url: "/send",
                 data: { 
-                    dataArr: id_barang 
+                    dataArr: id_keranjang 
                 },
                 async: true,
                 success: function(data){
@@ -371,12 +373,7 @@ $(function(){
         this.barcode_barang = barcode_barang;
     };
 
-    /*
-    let dataKeranjangPerRows = new dataKeranjang(
-        
-    );
-    */
-
+    //* ========== SELECTED ROW TABLE KERANJANG ========-    
     $('input[id^="select-item-cart"]').on('click', function(){
         let table_row_pgl = $(this).closest('tr');
 
@@ -385,11 +382,11 @@ $(function(){
         let tr_idKeranjang = $(this).parent("td").attr("id");
         let tr_deskripsiBrg_pgl = $(table_row_pgl).find("#deskripsi_brg_pgl").text();
         let tr_tglPemasukan_pgl = $(table_row_pgl).find("#tgl_pemasukan_pgl").text();
-        let tr_jenisBarang_pgl = $(table_row_pgl).find("#jenis_barang_pgl");
-        let tr_merekBarang_pgl = $(table_row_pgl).find("#merek_barang_pgl");
-        let tr_noDokumenBC_pgl = $(table_row_pgl).find("#no_dokumen_pgl");
-        let tr_barcodeBarang_pgl = $(table_row_pgl).find("#barcode_brg_pgl");
-        let tr_hargaPerUnit_pgl = $(table_row_pgl).find("#harga_per_unit_pgl");
+        let tr_jenisBarang_pgl = $(table_row_pgl).find("#jenis_barang_pgl").text();
+        let tr_merekBarang_pgl = $(table_row_pgl).find("#merek_barang_pgl").text();
+        let tr_noDokumenBC_pgl = $(table_row_pgl).find("#no_dokumen_pgl").text();
+        let tr_barcodeBarang_pgl = $(table_row_pgl).find("#barcode_brg_pgl").text();
+        let tr_hargaPerUnit_pgl = $(table_row_pgl).find("#harga_per_unit_pgl").text();
 
         let dataKeranjangPerRows = new dataKeranjang(
             tr_idKeranjang,
@@ -421,6 +418,76 @@ $(function(){
         console.log(dataPlace_pengeluaran);
         return dataPlace_pengeluaran;
     });
+    //* ========= Selected Row Table Keranjang End ========
+
+    //* ======== ADD SELECTED ROW INTO LAMPIRAN =========
+    if($("#lampiran_item_container:empty")){
+        $("#lampiran_item_container").append(`
+            <!--- DISPLAY BARANG BELUM DIPILIH --->
+            <div class="p-4 d-flex justify-content-center" id="display-empty">
+                <h1 class="display-5">Barang belum dipilih!</h1>
+            </div>
+        `);
+    }
+    
+    //let check_barang_arr = [];
+
+    $("#add-lampiran-btn").on("click", function(){ 
+        $("#display-empty").remove();
+
+        for(let i = 0; i < dataPlace_pengeluaran.length; i++){
+
+            $("#lampiran_item_container").append(`
+                <!--- LAMPIRAN ITEM --->
+                <div class="d-flex border border-dark my-1 p-1 justify-content-around align-items-center" id="barang-item">
+                    <div>
+                        <strong>Reff: </strong>
+                        <span class="barcode-barang">${dataPlace_pengeluaran[i].barcode_barang}</span>
+                    </div>
+                    <div>
+                        <strong>Description Brg: </strong>
+                        <span class="deskripsi-barang">${dataPlace_pengeluaran[i].deskripsi_barang}</span>
+                    </div>
+                    <div class="action-btn">
+                        <button type="button" class="btn btn-danger" id="delete-barang">
+                            Delete
+                            <span class="icon-trash-svgrepo-com"></span>
+                        </button>
+                    </div>
+                </div>
+            `);
+        };
+
+    })
+    //* ========= Add Selected Row Into Lampiran End ========
+
+    //* ======== DELETE CHECK BARANG INTO LAMPIRAN =======
+    $(document).on("click", "#delete-barang", function(){
+        $(this).closest("div#barang-item").remove();
+
+    });
+    //* ======= Delete Check Barang Into Lampiran End ========
+
+   
+    //* ========== Input Into Lampiran PPB-TBB List ==========
+    $("#add-lampiran-list-item-btn").on("click", function(){
+        let input_nomorDokumenBC_range = $("#min-no-dokumen-bc").val() + " - " + $("#max-no-dokumen-bc").val();
+
+        let input_jenisDokumen = $("#jenis-dokumen").val();
+        let input_tglDokumenMasuk = $("#tgl_dokumen_masuk").val();
+        let input_indexTag = $("#index-tag").val();
+
+        let lampiran_objArr = [];
+        dataPlace_pengeluaran.forEach((obj, index) => {
+            var lampiran_obj = {};
+            lampiran_obj.barcode_barang = obj.barcode_barang;
+            lampiran_obj.deskripsi_barang = obj.deskripsi_barang;
+            lampiran_objArr.push(lampiran_obj); 
+        });        
+
+        console.log(lampiran_objArr);
+    });
+
 });
 
 

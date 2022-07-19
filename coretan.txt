@@ -161,3 +161,21 @@ console.log(arr);
     </nav>
 
     INSERT INTO tb_keranjang (deskripsi_barang, tgl_pemasukan, jenis_barang, merek_barang, no_dokumen_bc, barcode_barang, harga_per_unit) SELECT b.deskripsi_brg, d.tgl_pemasukan, j.jenis_barang, b.merek_brg, d.no_dokumen_bc, b.barcode_brg, b.harga_per_unit FROM tb_barang AS b JOIN tb_dokumen AS d ON (b.id_dokumen = d.id_dokumen) JOIN tb_jenis_barang AS j ON (b.id_jenis_brg = j.id_jenis_brg) WHERE b.deskripsi_brg IN (""); 
+
+    <!--- LAMPIRAN ITEM --->
+    <div class="d-flex border border-dark my-1 p-1 justify-content-around align-items-center">
+        <div class="barcode-barang">
+            <strong>Reff: </strong>
+            <span>7611773097710</span>
+        </div>
+        <div class="deskripsi-barang">
+            <strong>Description Brg: </strong>
+            <span>LAP Supreme Balm Cleaner</span>
+        </div>
+        <div class="action-btn">
+            <button type="button" class="btn btn-danger">
+                Delete 
+                <span class="icon-trash-svgrepo-com"></span>
+            </button>
+        </div>
+    </div>
