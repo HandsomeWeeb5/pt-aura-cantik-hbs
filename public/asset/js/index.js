@@ -5,15 +5,7 @@ $(function(){
     //* ========== SEARCH BAR ===========
     $("#search-button").on("click", function(){
         var value = $("#cari_deskripsi_brg").val().toLowerCase();
-        $(".clickable-rows").filter(function(){
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > - 1);
-        });
-    });
-
-
-    $("#search-button").on("click", function(){
-        var value = $("#cari_deskripsi_brg").val().toLowerCase();
-        $(".clickable-rows").filter(function(){
+        $("#tb_pemasukan tbody tr").filter(function(){
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > - 1);
         });
     });
@@ -349,6 +341,14 @@ $(function(){
     TODO##########      Pengeluaran Barang    ###################
     TODO##########################################################
     */
+    //* ========= SEARCH BAR KERANJANG ===================
+    $("#search_bar_pgl").on("keyup", function(){
+        var value = $(this).val().toLowerCase();
+        $("#tb_keranjang tbody tr").filter(function(){
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > - 1);
+        });
+    });
+    //* ========= Search Bar Keranjang End ===============
 
     let dataPlace_pengeluaran = [];
     let count_pengeluaran = 0;
@@ -420,57 +420,9 @@ $(function(){
     });
     //* ========= Selected Row Table Keranjang End ========
 
-    //* ======== ADD SELECTED ROW INTO LAMPIRAN =========
-    if($("#lampiran_item_container:empty")){
-        $("#lampiran_item_container").append(`
-            <!--- DISPLAY BARANG BELUM DIPILIH --->
-            <div class="p-4 d-flex justify-content-center" id="display-empty">
-                <h1 class="display-5">Barang belum dipilih!</h1>
-            </div>
-        `);
-    }
-    
     //let check_barang_arr = [];
-
-    $("#add-lampiran-btn").on("click", function(){ 
-        $("#display-empty").remove();
-
-        for(let i = 0; i < dataPlace_pengeluaran.length; i++){
-
-            $("#lampiran_item_container").append(`
-                <!--- LAMPIRAN ITEM --->
-                <div class="d-flex border border-dark my-1 p-1 justify-content-around align-items-center" id="barang-item">
-                    <div>
-                        <strong>Reff: </strong>
-                        <span class="barcode-barang">${dataPlace_pengeluaran[i].barcode_barang}</span>
-                    </div>
-                    <div>
-                        <strong>Description Brg: </strong>
-                        <span class="deskripsi-barang">${dataPlace_pengeluaran[i].deskripsi_barang}</span>
-                    </div>
-                    <div class="action-btn">
-                        <button type="button" class="btn btn-danger" id="delete-barang">
-                            Delete
-                            <span class="icon-trash-svgrepo-com"></span>
-                        </button>
-                    </div>
-                </div>
-            `);
-        };
-
-    })
-    //* ========= Add Selected Row Into Lampiran End ========
-
-    //* ======== DELETE CHECK BARANG INTO LAMPIRAN =======
-    $(document).on("click", "#delete-barang", function(){
-        $(this).closest("div#barang-item").remove();
-
-    });
-    //* ======= Delete Check Barang Into Lampiran End ========
-
-   
     //* ========== Input Into Lampiran PPB-TBB List ==========
-    $("#add-lampiran-list-item-btn").on("click", function(){
+    $("#add-lampiran-item").on("click", function(){
         let input_nomorDokumenBC_range = $("#min-no-dokumen-bc").val() + " - " + $("#max-no-dokumen-bc").val();
 
         let input_jenisDokumen = $("#jenis-dokumen").val();

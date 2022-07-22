@@ -29,11 +29,11 @@
                             <div class="d-flex justify-content-between">
                                 <div>
                                     <!--- NO. DOKUMEN BC MIN & MAX INPUT --->
-                                    <label for="no_dokumen_bc_lampiran">No. Dokumen BC:</label>
-                                    <input type="text" name="no_dokumen_bc_lampiran" id="no_dokumen_bc_lampiran" class="form-control">
+                                    <label for="no_dokumen_bc_lmpr">No. Dokumen BC:</label>
+                                    <input type="text" name="no_dokumen_bc_lmpr" id="no_dokumen_bc_lmpr" class="form-control">
                                 </div>
                                 <div>
-                                    <label for="merek_lampiran">Merek Barang: </label>
+                                    <label for="merek_lampiran">Merek Khusus: </label>
                                     <input type="text" name="merek_lampiran" id="merek_lampiran" class="form-control">
                                 </div>
                             </div>
@@ -49,12 +49,12 @@
                                 </div>
                                 <!--- TGL. PEMASUKAN INPUT --->
                                 <div>
-                                    <label for="tgl_dokumen_masuk_lampiran">Tgl. Dokumen Masuk:</label>
-                                    <input type="date" name="tgl_dokumen_masuk_lampiran" id="tgl_dokumen_masuk_lampiran" class="form-control">
+                                    <label for="tgl_dokumen_masuk_lmpr">Tgl. Dokumen Masuk:</label>
+                                    <input type="date" name="tgl_dokumen_masuk_lmpr" id="tgl_dokumen_masuk_lmpr" class="form-control">
                                 </div>
                                 <div>
-                                    <label for="jenis_barang_lampiran">Jenis Barang</label>
-                                    <select name="jenis_barang_lampiran" id="jenis_barang_lampiran" class="form-select">
+                                    <label for="jenis_barang_lmpr">Jenis Barang</label>
+                                    <select name="jenis_barang_lmpr" id="jenis_barang_lmpr" class="form-select">
                                         <option selected> === PILIH === </option>
                                         <option value="Kosmetik">Kosmetik</option>
                                         <option value="Perhiasan">Perhiasan</option>
@@ -68,8 +68,8 @@
                         <!--- THIRD ROW --->
                         <div class="row my-1">
                             <div class="col">
-                                <label for="index_tag">Index Tag:</label>
-                                <input type="text" name="index_tag" id="index_tag" class="ms-1 form-control">
+                                <label for="index_tag_lmpr">Index Tag:</label>
+                                <input type="text" name="index_tag_lmpr" id="index_tag_lmpr" class="ms-1 form-control">
                             </div>
                             <div class="col">
                             <!--- INPUT ERROR FLASH --->
@@ -94,6 +94,11 @@
 
                             <!--- TABLE KERANJANG BARANG --->
                             <div class="col">
+                                <!--- TABLE KERANJANG SEARCH BAR --->
+                                <div class="d-flex align-items-center my-2">
+                                    <p style="margin: 0;">Search: </p>
+                                    <input type="text" placeholder="Cari Deskripsi Barang" id="search_bar_pgl" name="search_bar_pgl" class="ms-2">
+                                </div>
                                 <!--- TABLE KERANJANG CONTAINER --->
                                 <div class="overflow-scroll table-container-size-pgl border mx-4 bg-light">
                                     <table class="table table-light table-bordered border table-hover table-custom-pgl" id="tb_keranjang">
@@ -145,56 +150,7 @@
                                 </div>
                             </div>
 
-                        </div>
-
-                        <!--- FOURTH ROW --->
-                        <div class="my-1 bg-light mx-3 p-1">
-                            <div class="p-2">
-                                <h4>Tambah Barang</h4>
-                            </div>
-                            <!--- LAMPIRAN ITEM CONTAINER --->
-                            <div class="border border-primary p-1" id="lampiran_item_container">
-                                <!--- LAMPIRAN ITEM --->
-                                <!---
-                                <div class="d-flex border border-dark my-1 p-1 justify-content-around align-items-center">
-                                    <div class="barcode-barang">
-                                        <strong>Reff: </strong>
-                                        <span>7611773097710</span>
-                                    </div>
-                                    <div class="deskripsi-barang">
-                                        <strong>Description Brg: </strong>
-                                        <span>LAP Supreme Balm Cleaner</span>
-                                    </div>
-                                    <div class="action-btn">
-                                        <button type="button" class="btn btn-danger" id="delete-barang">
-                                            Delete 
-                                            <span class="icon-trash-svgrepo-com"></span>
-                                        </button>
-                                    </div>
-                                </div>
-                                --->
-                            </div>
-                        </div>
-
-                        <!--- FIFTH ROW --->
-                        <div class="row mt-3">
-                            <div class="col">
-                                <!--- INPUT ERROR FLASH FROM TABLE --->
-                                <!---
-                                <%# if(errors != "") { %>
-                                    <%# errors.forEach((item) => { %>
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <%#- item %>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div>
-                                    <%# }); %>
-                                <%# } %> 
-                                --->
-                            </div>
-                            <div class="col">
-                                <button type="button" class="btn btn-primary" id="add_lampiran_list_item_btn"><strong>Tambahkan Lampiran ke Daftar</strong></button>
-                            </div>
-                        </div>
+                        </div> 
                     </form>
                 </div>
 
@@ -312,37 +268,47 @@
                                 <h4><strong>Input Laporan PPB-TBB</strong></h4>
                                 <p id="display-error">Input Wajib diisi semua</p>
                                 <div class="container border p-1">
-                                    <form>
+                                    <form method="post">
                                         <!--- R.I. NO. LAPORAN --->
                                         <div>
                                             <label class="form-label" for="nomor-laporan">Nomor Laporan:</label><br>
-                                            <input type="text" class="form-control mt-2" id="nomor-laporan">
+                                            <input type="text" class="form-control mt-2" id="nomor-laporan" name="nomor_laporan">
                                         </div>
                                         
                                         <div>
                                             <label class="form-label">Tanggal Laporan:</label><br>
-                                            <input type="radio" class="form-check-input" name="tanggal-laporan" id="auto-increment-date">
+                                            <input type="radio" class="form-check-input" name="tanggal_laporan" id="auto-increment-date">
                                             <label for="auto-increment-date" class="form-label">Auto-Increment (Penanggalan Otomatis)</label>
-                                            <input type="radio" class="form-check-input" name="tanggal-laporan"
+                                            <input type="radio" class="form-check-input" name="tanggal_laporan"
                                             value="date-manual" id="date-manual">
                                             <label for="date-manual" class="form-label">Tanggal Manual: </label>
                                             <input type="date" class="form-control mt-2" placeholder="Tanggal Manual.." id="date-manual">
                                         </div>
 
+                                        <div>
+                                            <label class="form-label">Aksi Transfer Barang:</label><br>
+                                            <input type="radio" class="form-check-input" name="transfer_status" 
+                                            value="pengeluaran" id="pengeluaran-brg">
+                                            <label for="pengeluaran-brg" class="form-label">Pengeluaran Barang</label><br>
+                                            <input type="radio" class="form-check-input" name="transfer_status"
+                                            value="penarikan" id="penarikan-brg">
+                                            <label for="penarikan-brg" class="form-label">Penarikan Barang</label>
+                                        </div>
+
                                         <label for="alamat-penimbunan" class="form-label">Alamat Ruang Penimbunan</label>
-                                        <input type="text" id="alamat-penimbunan">
+                                        <input type="text" id="alamat-penimbunan" name="alamat_penimbunan">
                                         
                                         <label for="alamat-penjualan" class="form-label">Alamat Ruang Penjualan</label>
-                                        <input type="text" id="alamat-penjualan">
+                                        <input type="text" id="alamat-penjualan" name="alamat_penjualan">
                                         
                                         <label for="penanggung-jawab" class="form-label">Nama Pg. Jawab TBB</label>
-                                        <input type="text" id="penanggung-jawab"><br>
+                                        <input type="text" id="penanggung-jawab" name="pngg_jawab_tbb"><br>
                                         
-                                        <label for="jabatan" class="form-label">Jabatan TBB</label><br>
-                                        <input type="text" id="jabatan"><br>
+                                        <label for="jabatan-tbb" class="form-label">Jabatan TBB</label><br>
+                                        <input type="text" id="jabatan-tbb" name="jabatan_tbb"><br>
                                         
                                         <label for="lokasi-tempat" class="form-label">Lokasi Tempat</label><br>
-                                        <select id="lokasi-tempat" class="form-select">
+                                        <select id="lokasi-tempat" class="form-select" name="lokasi_tempat">
                                             <option selected>-- PILIH --</option>
                                             <option value="DF6">DF6</option>
                                         </select>
