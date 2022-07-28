@@ -179,3 +179,31 @@ console.log(arr);
             </button>
         </div>
     </div>
+
+    @startuml histori_barang
+skinparam actorStyle awesome
+skinparam usecase {
+    BackgroundColor LightBlue
+}
+
+left to right direction
+
+:Manager/Supervisor: as ms << user >>
+:Database: as mysql << Application >> 
+
+(Search data\n barang) as PNY_1
+(Tabel \nData Barang) as PNY_2
+(Kirim \nData Barang) as PNY_3
+(Filter 6 Input) as PNY_1_1
+(Search Bar Deskripsi Brg) as PNY_1_2
+
+ms --> PNY_1
+ms --> PNY_2
+ms --> PNY_3
+PNY_1 <--- mysql
+PNY_2 <--- mysql
+PNY_3 <--- mysql
+PNY_1 <|.. PNY_1_1
+PNY_1 <|.. PNY_1_2
+
+@enduml

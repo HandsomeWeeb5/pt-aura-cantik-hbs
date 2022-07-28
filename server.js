@@ -6,11 +6,11 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const handlebars = require('express-handlebars');
+// const http = require("http");
 
 // Import Modules
 const { handlebarsViewEngine } = require('./config/view.config');
 const initBarangRoutes = require('./routes/barang.routes');
-const bodyParser = require('body-parser');
 
 // Access env file untuk menjalankan sistem
 require('dotenv').config();
@@ -20,22 +20,11 @@ const PORT = process.env.PORT || 7200
 const app = express();
 // Parsing (uraikan) data JSON dari Database
 app.use(express.json())
-// app.use(bodyParser.json());
-/*
-app.use(bodyParser.json({
-    strict: false
-}));
-*/
 
 // Parsing (uraikan) data form
 app.use(express.urlencoded(
     { extended: true }
 ))
-// app.use(bodyParser.urlencoded({
-//     extended: true
-// }))
-
-
 
 // aktifkan untuk perizinan CORS
 app.use(cors());
@@ -67,8 +56,11 @@ app.get('/histori', (req, res) => {
     res.render('histori', {layout: 'index'})
 });
 
-// URL syntax: http://localhost:7200/api/barang?limit=[number]&page=[number]
+// Initial Barang Routes
 initBarangRoutes(app);
+
+// Initial Login Routes 
+// initLoginRoutes(app); <= Still in Development
 
 // Server listen to Port 7200
 app.listen(PORT, (error) => {

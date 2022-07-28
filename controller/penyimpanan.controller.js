@@ -1,8 +1,7 @@
 // Import database services modules
 const barangService = require('../services/barang.service');
 
-const viewDataPerPage = async(req, res) => {
-    // let totalItem = await barangService.countAllItem_in_Table();
+const viewDataBarang = async(req, res) => {
     let results = await barangService.getDataBarang();
     let total_item = results.length;
     let totalPrice = await barangService.totalHargaDataBarang();
@@ -17,6 +16,34 @@ const viewDataPerPage = async(req, res) => {
         }
     });
 
+}
+
+const searchByDeskripsiBarang = async(req, res) => {
+    let keyword = req.query.search_bar;
+
+    let sumAll = await barangService.countAllItem_in_Table();
+    let total_item = sumAll[0].total_item
+    
+    let totalPrice = await barangService.totalHargaDataBarang();
+    let total_harga = totalPrice[0].total_harga;
+
+    let results = await barangService.getDataByDeskripsiBarang(keyword);
+
+    res.render('penyimpanan', {
+        layout: 'index',
+        data: {
+            results,
+            total_item,
+            total_harga
+        }
+    })
+    /*
+    res.json({data: {
+        results,
+        total_item,
+        total_harga
+    }})
+    */
 }
 
 const searchByFilter = async(req, res) => {
@@ -105,7 +132,8 @@ const copySelectedRowToCart = async(req, res) => {
 }
 
 module.exports = {
-    viewDataPerPage: viewDataPerPage,
+    viewDataBarang: viewDataBarang,
+    searchByDeskripsiBarang: searchByDeskripsiBarang,
     searchByFilter: searchByFilter,
     createNewData: createNewData,
     deleteSelectedRowById: deleteSelectedRowById,

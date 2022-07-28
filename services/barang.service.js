@@ -28,6 +28,10 @@ let sql__viewByFilter = `
     SELECT b.id_barang, b.deskripsi_brg, DATE_FORMAT(CONVERT_TZ(d.tgl_pemasukan, '+00:00', '+07:00'), "%d-%M-%Y") AS tgl_pemasukan, j.jenis_barang, b.waktu, d.no_dokumen_bc, b.merek_brg, b.harga_per_unit, b.vendor_item, b.hs_code, b.barcode_brg, b.img_barang FROM tb_barang AS b JOIN tb_dokumen AS d ON (b.id_dokumen = d.id_dokumen) JOIN tb_jenis_barang AS j ON (b.id_jenis_brg = j.id_jenis_brg) WHERE d.tgl_pemasukan = ? OR d.no_dokumen_bc = ? OR b.waktu = ? OR b.merek_brg = ? OR b.harga_per_unit = ? OR j.jenis_barang = ? ORDER BY b.id_barang; 
 `;
 
+let sql__viewByDeskripsiBarang = `
+SELECT b.id_barang, b.deskripsi_brg, d.tgl_pemasukan, j.jenis_barang, b.waktu, d.no_dokumen_bc, b.merek_brg, b.harga_per_unit, b.vendor_item, b.hs_code, b.barcode_brg, b.img_barang FROM tb_barang AS b JOIN tb_dokumen AS d ON (b.id_dokumen = d.id_dokumen) JOIN tb_jenis_barang AS j ON (b.id_jenis_brg = j.id_jenis_brg) WHERE b.deskripsi_brg LIKE "%duk%" ORDER BY b.id_barang; 
+`
+
 let sql__viewDataCart = `SELECT 
     id_keranjang,
     deskripsi_barang,
@@ -77,6 +81,17 @@ const totalHargaDataBarang = () => {
             if (err) throw err;
             resolve(results);
         })
+    })
+}
+
+const getDataByDeskripsiBarang = (keyword) => {
+    return new Promise(async (resolve, reject) => {
+        database.query(`
+        SELECT b.id_barang, b.deskripsi_brg, d.tgl_pemasukan, j.jenis_barang, b.waktu, d.no_dokumen_bc, b.merek_brg, b.harga_per_unit, b.vendor_item, b.hs_code, b.barcode_brg, b.img_barang FROM tb_barang AS b JOIN tb_dokumen AS d ON (b.id_dokumen = d.id_dokumen) JOIN tb_jenis_barang AS j ON (b.id_jenis_brg = j.id_jenis_brg) WHERE b.deskripsi_brg LIKE "%${keyword}%" ORDER BY b.id_barang; 
+        `, (err, results) => {
+            if (err) throw err;
+            resolve(results);
+        });
     })
 }
 
@@ -160,6 +175,7 @@ const countAllItem_in_Cart = () => {
 module.exports = {
     //getDataPerPage: getDataPerPage,
     //TODO DB Services for Pemasukan
+    getDataByDeskripsiBarang: getDataByDeskripsiBarang,
     getDataByFilter: getDataByFilter,
     getDataBarang: getDataBarang,
     addNewData: addNewData,
